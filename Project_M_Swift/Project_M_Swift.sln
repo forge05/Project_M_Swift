@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{656346D9-4656-40DA-A068-22D5425D4639}") = "Project_M_Swift", "Project_M_Swift\Project_M_Swift.elements", "{B92B62A8-347F-4EBB-99BF-59E544BEE8E7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Default = Debug|Default
+		Release|Default = Release|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B92B62A8-347F-4EBB-99BF-59E544BEE8E7}.Debug|Default.ActiveCfg = Debug
+		{B92B62A8-347F-4EBB-99BF-59E544BEE8E7}.Debug|Default.Build.0 = Debug
+		{B92B62A8-347F-4EBB-99BF-59E544BEE8E7}.Release|Default.ActiveCfg = Release
+		{B92B62A8-347F-4EBB-99BF-59E544BEE8E7}.Release|Default.Build.0 = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
