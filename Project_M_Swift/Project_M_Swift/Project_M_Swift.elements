@@ -69,6 +69,28 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Feld.swift">
+      <DesignableClassName>Project_M_Swift.Feld</DesignableClassName>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="frm_Einstellungen.Designer.swift">
+      <SubType>Form</SubType>
+      <DependentUpon>frm_Einstellungen.swift</DependentUpon>
+      <DesignableClassName>Project_M_Swift.frm_Einstellungen</DesignableClassName>
+    </Compile>
+    <Compile Include="frm_Einstellungen.swift">
+      <SubType>Form</SubType>
+      <DesignableClassName>Project_M_Swift.frm_Einstellungen</DesignableClassName>
+    </Compile>
+    <Compile Include="frm_Spielfeld.Designer.swift">
+      <SubType>Form</SubType>
+      <DependentUpon>frm_Spielfeld.swift</DependentUpon>
+      <DesignableClassName>Project_M_Swift.frm_Spielfeld</DesignableClassName>
+    </Compile>
+    <Compile Include="frm_Spielfeld.swift">
+      <SubType>Form</SubType>
+      <DesignableClassName>Project_M_Swift.frm_Spielfeld</DesignableClassName>
+    </Compile>
     <Compile Include="Main.swift">
       <SubType>Form</SubType>
       <DesignableClassName>Project_M_Swift.MainForm</DesignableClassName>
@@ -77,6 +99,19 @@
       <SubType>Form</SubType>
       <DesignableClassName>Project_M_Swift.MainForm</DesignableClassName>
     </Compile>
+    <Compile Include="Startfeld.swift">
+      <SubType>Component</SubType>
+      <DesignableClassName>Project_M_Swift.Startfeld</DesignableClassName>
+    </Compile>
+    <EmbeddedResource Include="Feld.resx">
+      <DependentUpon>Feld.swift</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_Einstellungen.resx">
+      <DependentUpon>frm_Einstellungen.swift</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_Spielfeld.resx">
+      <DependentUpon>frm_Spielfeld.swift</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Main.resx" />
     <Compile Include="Program.swift" />
     <Compile Include="Properties\AssemblyInfo.swift" />

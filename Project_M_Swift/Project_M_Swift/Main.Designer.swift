@@ -1,12 +1,14 @@
-﻿__partial class MainForm {
+﻿public __partial class MainForm {
 
 	/// <summary>
 	/// Required designer variable.
 	/// </summary>
 	
     var components: System.ComponentModel.IContainer!
-    var button2: System.Windows.Forms.Button!
-    var button1: System.Windows.Forms.Button!
+    
+    
+    var btn_beenden: System.Windows.Forms.Button!
+    var btn_neues_spiel: System.Windows.Forms.Button!
 
 	/// <summary>
 	/// Clean up any resources being used.
@@ -23,27 +25,29 @@
 
 	func InitializeComponent() {
         var resources: System.ComponentModel.ComponentResourceManager! = System.ComponentModel.ComponentResourceManager(MainForm.Type)
-        self.button1 = System.Windows.Forms.Button()
-        self.button2 = System.Windows.Forms.Button()
+        self.btn_neues_spiel = System.Windows.Forms.Button()
+        self.btn_beenden = System.Windows.Forms.Button()
         self.SuspendLayout()
-        //  button1
-        self.button1.Location = System.Drawing.Point(120, 57)
-        self.button1.Name = "button1"
-        self.button1.Size = System.Drawing.Size(75, 23)
-        self.button1.TabIndex = 0
-        self.button1.Text = "button1"
-        self.button1.UseVisualStyleBackColor = true
-        //  button2
-        self.button2.Location = System.Drawing.Point(120, 100)
-        self.button2.Name = "button2"
-        self.button2.Size = System.Drawing.Size(75, 23)
-        self.button2.TabIndex = 1
-        self.button2.Text = "button2"
-        self.button2.UseVisualStyleBackColor = true
+        //  btn_neues_spiel
+        self.btn_neues_spiel.Location = System.Drawing.Point(60, 29)
+        self.btn_neues_spiel.Name = "btn_neues_spiel"
+        self.btn_neues_spiel.Size = System.Drawing.Size(107, 23)
+        self.btn_neues_spiel.TabIndex = 0
+        self.btn_neues_spiel.Text = "Neues Spiel"
+        self.btn_neues_spiel.UseVisualStyleBackColor = true
+        self.btn_neues_spiel.Click += System.EventHandler(self.btn_neues_spiel_Click)
+        //  btn_beenden
+        self.btn_beenden.Location = System.Drawing.Point(60, 72)
+        self.btn_beenden.Name = "btn_beenden"
+        self.btn_beenden.Size = System.Drawing.Size(107, 23)
+        self.btn_beenden.TabIndex = 1
+        self.btn_beenden.Text = "Beenden"
+        self.btn_beenden.UseVisualStyleBackColor = true
+        self.btn_beenden.Click += System.EventHandler(self.btn_beenden_Click)
         //  MainForm
-        self.ClientSize = System.Drawing.Size(292, 273)
-        self.Controls.Add(self.button2)
-        self.Controls.Add(self.button1)
+        self.ClientSize = System.Drawing.Size(235, 139)
+        self.Controls.Add(self.btn_beenden)
+        self.Controls.Add(self.btn_neues_spiel)
         self.Icon = resources.GetObject("$this.Icon") as! System.Drawing.Icon
         self.Name = "MainForm"
         self.Text = "MainForm"
