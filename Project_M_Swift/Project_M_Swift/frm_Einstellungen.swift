@@ -15,7 +15,11 @@ public __partial class frm_Einstellungen: Form {
 	}
 
     func frm_Einstellungen_Load(_ sender: System.Object!, _ e: System.EventArgs!) {
-
+            
+            //comboBoxen anlegen
+            //cmb_spielerfarbe1.Items.Add("hallo");
+            //cmb_spielerfarbe1.Items.Add("wergwe");
+            //cmb_spielerfarbe1.Text = "Text";
     }
 
     func btn_zurueck_Click(_ sender: System.Object!, _ e: System.EventArgs!) {

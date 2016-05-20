@@ -5,11 +5,10 @@ import System.Windows.Forms
 
 
 public class Feld : Button {
-    var entfernung_zum_ziel : Integer?
+    var entfernung_zum_ziel : Int32?
     var inhalt : Content?
     var nachbarn : Feld[]?
     var schonGeruecktWorden = false
-    var button1: System.Windows.Forms.Button!
     
 
     func setAttributes(c : Feld.Content , distanz : Integer){
@@ -21,31 +20,7 @@ public class Feld : Button {
         nachbarn = felder
     }
 
-    public enum Content : Integer{
-        case RED = 1, GREEN, YELLOW, BLUE, BLACK, GOAL, BLOCK
-
-//        private final int stelle
-//
-//        content(int stelle) {
-//            this.stelle = stelle
-//        }
-//
-//        public int getStelle() {
-//            return this.stelle
-//        }
+    public enum Content : Int32{
+        case RED = 1, GREEN = 2, YELLOW = 3, BLUE = 4, BLACK = 5, GOAL = 6, BLOCK = 7
     }
-
-
-//    func InitializeComponent() {
-//        self.button1 = System.Windows.Forms.Button()
-//        self.SuspendLayout()
-//        //  button1
-//        self.button1.Location = System.Drawing.Point(0, 0)
-//        self.button1.Name = "button1"
-//        self.button1.Size = System.Drawing.Size(75, 23)
-//        self.button1.TabIndex = 0
-//        self.button1.Text = "button1"
-//        self.button1.UseVisualStyleBackColor = true
-//        self.ResumeLayout(false)
-//    }
 }

@@ -6,12 +6,34 @@ import System.Drawing
 import System.Linq
 import System.Text
 import System.Windows.Forms
+import RemObjects.Elements.System
 
 public __partial class frm_Spielfeld: Form {
 
     var frm_einstellungen : frm_Einstellungen
     var frm_menue : MainForm
-    var wurfzahl : Integer?
+    var wurfzahl : Int32?
+    var playerAnzahl : Integer!
+    var playerName1 : String?
+    var playerName2 : String?
+    var playerName3 : String?
+    var playerName4 : String?
+    var CPU1 = false
+    var CPU2 = false
+    var CPU3 = false
+    var CPU4 = false
+    var player_1 : Player!
+    var player_2 : Player!
+    var player_3 : Player!
+    var player_4 : Player!
+    var player : Player[4]
+    //var an_der_Reihe : Player?
+    var an_der_Reihe_Index = -1
+    var schonGewuerfelt = false
+    var someoneWon = false
+    var blockZuSetzen = false
+    var propagierender : Feld?
+
 
 	public init(menue : MainForm, einstellungen : frm_Einstellungen)	{
 		frm_menue = menue
@@ -19,11 +41,143 @@ public __partial class frm_Spielfeld: Form {
 		InitializeComponent()
         attribute()
         nachbarn()
+        playerErstellen()
+        nextPlayer()
 	}
+
+
+    func nextPlayer(){
+        an_der_Reihe_Index++
+        if(an_der_Reihe_Index < playerAnzahl){
+            //label auktualisiert
+            an_der_Reihe_Index = 0
+        }
+        lbl_wurfzahl.Text = ""
+        schonGewuerfelt = false
+        btn_wuerfeln.Enabled = true
+        btn_aussetzen.Enabled = false
+        propagiereZuruecksetzen()
+
+    }
+
+    func propagiereZuruecksetzen(){
+        for c in self.Controls{
+            if let feld = c as? Feld{
+                switch(feld.inhalt){
+                    case Feld.Content.RED:
+                        feld.BackColor = Color.Red
+                        break;
+                    case Feld.Content.GREEN:
+                        feld.BackColor = Color.Green
+                        break;
+                    case Feld.Content.YELLOW:
+                        feld.BackColor = Color.Yellow
+                        break;
+                    case Feld.Content.BLUE:
+                        feld.BackColor = Color.Blue
+                        break;
+                    case Feld.Content.BLACK:
+                        feld.BackColor = Color.Black
+                        break;
+                    case Feld.Content.BLOCK:
+                        feld.BackColor= Color.White
+                        break;
+                    case Feld.Content.GOAL:
+                        feld.BackColor = Color.Fuchsia
+                    default:
+                        break;
+
+                }
+            }
+        }
+    }
+    func playerErstellen(){
+
+        for  c in frm_einstellungen.Controls{
+            if let rbtn = c as? RadioButton{
+                if rbtn.Checked{
+                    playerAnzahl = Integer.Parse(rbtn.Text)
+                }
+            }
+            else if let tf = c as? TextBox{
+                if tf.Name == "tb_spieler1"{
+                    playerName1 = tf.Name
+                }
+                else if tf.Name == "tb_spieler2"{
+                    playerName2 = tf.Name
+                }
+                else if tf.Name == "tb_spieler3"{
+                    playerName3 = tf.Name
+                }
+                else if tf.Name == "tb_spieler4"{
+                    playerName4 = tf.Name
+                }
+            }
+            else if let cb = c as? CheckBox{
+                if cb.Name == "ckb_spieler1"{
+                    if cb.Checked{
+                        CPU1 = true
+                    }
+                }
+                else if cb.Name == "ckb_spieler2"{
+                    if cb.Checked{
+                        CPU2 = true
+                    }
+                }
+                else if cb.Name == "ckb_spieler3"{
+                    if cb.Checked{
+                        CPU3 = true
+                    }
+                }
+                else if cb.Name == "ckb_spieler4"{
+                    if cb.Checked{
+                        CPU4 = true
+                    }
+                }
+            }
+            //comboBoxen auslesen
+            //ComboBox cmb = (ComboBox)sender;
+            //foreach ComboBox : Form1.Controls
+            //if (cmb == cmb_spielerfarbe1)
+            //cmb_spielerfarbe2.Items.Remove(cmb.SelectedItem);
+        }
+        if CPU1 {
+            player_1 = CPU (inhalt : Feld.Content.RED , name : playerName1)
+        }
+        else{
+            player_1 = Spieler (inhalt : Feld.Content.RED , name : playerName1)
+        }
+        player[0] = player_1
+        if CPU2 {
+            player_2 = CPU (inhalt : Feld.Content.GREEN , name : playerName2)
+        }
+        else{
+            player_2 = Spieler (inhalt : Feld.Content.GREEN , name : playerName2)
+        }
+        player[1] = player_2
+        if playerAnzahl >= 3{
+            if CPU1 {
+                player_3 = CPU (inhalt : Feld.Content.YELLOW , name : playerName3)
+            }
+            else{
+                player_3 = Spieler (inhalt : Feld.Content.YELLOW , name : playerName3)
+            }
+            player[2] = player_3
+            if(playerAnzahl >= 4){
+                if CPU1 {
+                    player_4 = CPU (inhalt : Feld.Content.BLUE , name : playerName4)
+                }
+                else{
+                    player_4 = Spieler (inhalt : Feld.Content.BLUE , name : playerName4)
+                }
+                player[3] = player_4
+            }
+        }
+    }
 
     func attribute(){
         btn_0_ziel.setAttributes(Feld.Content.GOAL, distanz : 0)
-       btn_1.setAttributes(Feld.Content.BLOCK, distanz : 1)
+        btn_1.setAttributes(Feld.Content.BLOCK, distanz : 1)
         btn_2_1.setAttributes(Feld.Content.BLACK, distanz : 2)
         btn_2_2.setAttributes(Feld.Content.BLACK, distanz : 2)
         btn_3_1.setAttributes(Feld.Content.BLACK, distanz : 3)
@@ -266,10 +420,10 @@ public __partial class frm_Spielfeld: Form {
         btn_38_6.setNachbar(btn_37_4, btn_39_3)
         btn_38_7.setNachbar(btn_37_4, btn_39_4)
         btn_38_8.setNachbar(btn_37_5, btn_39_4)
-        btn_39_1.setNachbar(btn_38_1, btn_38_2, sf_red_1, sf_red_2, sf_red_3, sf_red_4, sf_red_5)
-        btn_39_2.setNachbar(btn_38_3, btn_38_4, sf_green_1, sf_green_2, sf_green_3, sf_green_4, sf_green_5)
-        btn_39_3.setNachbar(btn_38_5, btn_38_6, sf_yellow_1, sf_yellow_2, sf_yellow_3, sf_yellow_4, sf_yellow_5)
-        btn_39_4.setNachbar(btn_38_7, btn_38_8, sf_blue_1, sf_blue_2, sf_blue_3, sf_blue_4, sf_blue_5)
+        btn_39_1.setNachbar(btn_38_1, btn_38_2)   //, sf_red_1, sf_red_2, sf_red_3, sf_red_4, sf_red_5)                         //wollen nie in startfelder zurückrücken
+        btn_39_2.setNachbar(btn_38_3, btn_38_4) //, sf_green_1, sf_green_2, sf_green_3, sf_green_4, sf_green_5)
+        btn_39_3.setNachbar(btn_38_5, btn_38_6) //, sf_yellow_1, sf_yellow_2, sf_yellow_3, sf_yellow_4, sf_yellow_5)
+        btn_39_4.setNachbar(btn_38_7, btn_38_8) //, sf_blue_1, sf_blue_2, sf_blue_3, sf_blue_4, sf_blue_5)
         sf_red_1.setNachbar(btn_39_1)
         sf_red_2.setNachbar(btn_39_1)
         sf_red_3.setNachbar(btn_39_1)
@@ -291,23 +445,125 @@ public __partial class frm_Spielfeld: Form {
         sf_blue_4.setNachbar(btn_39_4)
         sf_blue_5.setNachbar(btn_39_4)
     }
-    
-    func btn_Click(_ sender: System.Object!, _ e: System.EventArgs!) {
-        
-        if let f = sender as? Feld{
-            if f.BackColor == Color.Cyan {
-                f.BackColor = Color.Black
-                for nachbar in f.nachbarn{
-                    nachbar.BackColor = Color.Black
+
+    func propagiereRueckOptionen(aktuellesFeld : Feld, spruenge : Int32?, altesFeld : Feld, spielerContent : Feld.Content?){
+        if spruenge != 0 {
+            if aktuellesFeld.inhalt != Feld.Content.BLOCK{
+                if let nachbarn = aktuellesFeld.nachbarn as? Feld[]{
+                    for nachbar  in nachbarn{
+                        if nachbar != altesFeld{
+                            propagiereRueckOptionen(nachbar, spruenge: spruenge - 1 , altesFeld: aktuellesFeld , spielerContent: spielerContent )
+                        }
+                    }
                 }
+                
             }
-            else{
-                f.BackColor = Color.Cyan
-                for nachbar in f.nachbarn{
-                    nachbar.BackColor = Color.Cyan
+        }
+        else {
+            if aktuellesFeld.inhalt != spielerContent{
+                aktuellesFeld.BackColor = Color.Brown
+            }
+            if aktuellesFeld.inhalt == Feld.Content.BLOCK{
+               aktuellesFeld.Text = "Block"
+            }
+            if aktuellesFeld.inhalt != spielerContent{
+                                switch aktuellesFeld.inhalt.rawValue{
+                                    case 1:
+                                        aktuellesFeld.Text = "Red"
+                                        break;
+                                    case 2:
+                                        aktuellesFeld.Text = "Green"
+                                        break;
+                                    case 3:
+                                        aktuellesFeld.Text = "Yellow"
+                                        break;
+                                    case 4:
+                                        aktuellesFeld.Text = "Blue"
+                                        break;
+                                    default:
+                                        break;
+                                }
+
+            }
+            if aktuellesFeld.inhalt == Feld.Content.GOAL{
+                aktuellesFeld.Text = "Ziel!"
+           }
+        }
+
+    }
+
+    func propagiereRueckOptionenStartfelder(startfeld : Startfeld, spruenge : Int32?, spielerContent : Feld.Content?){
+            
+        if let nachbarn = startfeld.nachbarn as? Feld[]{
+            for nachbar in nachbarn{
+                if let feldnachbar = nachbar as Feld{
+                    propagiereRueckOptionen(feldnachbar, spruenge: spruenge - 1, altesFeld : feldnachbar , spielerContent: spielerContent)
+
                 }
             }
         }
+                
+
+    }
+    
+    func btn_Click(_ sender: System.Object!, _ e: System.EventArgs!) {
+        
+        if let feld = sender as? Feld{
+            if let startfeld = sender as? Startfeld{
+                if !someoneWon {
+                    if !blockZuSetzen {
+                        if schonGewuerfelt {
+                            if startfeld.BackColor != Color.Brown {
+                                propagiereZuruecksetzen()
+                            }
+                            if startfeld.BackColor == Color.Brown {
+                                //ruecken(myfeld, propagierender);
+                                if !blockZuSetzen && !someoneWon {
+                                    nextPlayer()
+                                }
+                            } else if startfeld.inhalt == player[an_der_Reihe_Index].spielerFarbe{
+                                //propagierender = feld
+                                propagiereRueckOptionenStartfelder(startfeld, spruenge : wurfzahl, spielerContent : startfeld.inhalt)
+                            }
+                        
+                            
+                        }
+                    } else {
+                        // blockSetzen(myfeld)
+                    }
+                
+                }
+            }
+            else{
+                if !someoneWon {
+                    if !blockZuSetzen {
+                        if schonGewuerfelt {
+                            if feld.BackColor != Color.Brown {
+                                propagiereZuruecksetzen()
+                            }
+                            if feld.BackColor == Color.Brown {
+                                //ruecken(myfeld, propagierender);
+                                if !blockZuSetzen && !someoneWon {
+                                    nextPlayer()
+                                }
+                            } else if feld.inhalt == player[an_der_Reihe_Index].spielerFarbe{
+                                propagierender = feld
+                                //propagiereRueckOptionen(feld, spruenge : wurfzahl, altesFeld : feld, spielerContent : feld.inhalt)
+                            }
+                        
+                            
+                        }
+                    } else {
+                        // blockSetzen(myfeld)
+                    }
+                
+                }
+            }
+        }
+        else if let startfeld = sender as? Startfeld{
+
+        }
+       
     }
 
     func btn_beenden_Click(_ sender: System.Object!, _ e: System.EventArgs!) {
@@ -325,5 +581,9 @@ public __partial class frm_Spielfeld: Form {
         var zahlenfee = Random()
         wurfzahl = zahlenfee.Next(1, 7)
         lbl_wurfzahl.Text = "" + wurfzahl
+        schonGewuerfelt = true
+        btn_aussetzen.Enabled = true
+        btn_wuerfeln.Enabled = false
+        //jlbl_anDerReihe.setText("Spieler " + an_der_Reihe.spielerName + ": Bitte rücken Sie. Eigene Figur anklicken, um Rückoptionen anzeigen zu lassen.");
     }
 }

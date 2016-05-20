@@ -53,6 +53,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />
+    <Reference Include="swift.jar" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -69,6 +70,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CPU.swift" />
     <Compile Include="Feld.swift">
       <DesignableClassName>Project_M_Swift.Feld</DesignableClassName>
       <SubType>Component</SubType>
@@ -99,6 +101,8 @@
       <SubType>Form</SubType>
       <DesignableClassName>Project_M_Swift.MainForm</DesignableClassName>
     </Compile>
+    <Compile Include="Player.swift" />
+    <Compile Include="Spieler.swift" />
     <Compile Include="Startfeld.swift">
       <SubType>Component</SubType>
       <DesignableClassName>Project_M_Swift.Startfeld</DesignableClassName>
