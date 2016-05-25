@@ -36,4 +36,31 @@ public __partial class frm_Einstellungen: Form {
     func frm_Einstellungen_FormClosing(_ sender: System.Object!, _ e: System.Windows.Forms.FormClosingEventArgs!) {
         frm_menue.Dispose()
     }
+
+    func rbtn_anz_3_CheckedChanged(_ sender: System.Object!, _ e: System.EventArgs!) {
+        tb_spieler3.Enabled = true
+        cmb_spieler3.Enabled = true
+        ckb_spieler3.Enabled = true
+        tb_spieler4.Enabled = false 
+        cmb_spieler4.Enabled = false
+        ckb_spieler4.Enabled = false
+    }
+
+    func rbtn_anz_2_CheckedChanged(_ sender: System.Object!, _ e: System.EventArgs!) {
+        tb_spieler3.Enabled = false
+        cmb_spieler3.Enabled = false
+        ckb_spieler3.Enabled = false
+        tb_spieler4.Enabled = false 
+        cmb_spieler4.Enabled = false
+        ckb_spieler4.Enabled = false
+    }
+
+    func rbtn_anz_4_CheckedChanged(_ sender: System.Object!, _ e: System.EventArgs!) {
+        tb_spieler3.Enabled = true
+        cmb_spieler3.Enabled = true
+        ckb_spieler3.Enabled = false
+        tb_spieler4.Enabled = true 
+        cmb_spieler4.Enabled = true
+        ckb_spieler4.Enabled = false
+    }
 }

@@ -170,6 +170,7 @@
         self.rbtn_anz_2.TabIndex = 5
         self.rbtn_anz_2.Text = "2"
         self.rbtn_anz_2.UseVisualStyleBackColor = true
+        self.rbtn_anz_2.CheckedChanged += System.EventHandler(self.rbtn_anz_2_CheckedChanged)
         //  rbtn_anz_3
         self.rbtn_anz_3.AutoSize = true
         self.rbtn_anz_3.Location = System.Drawing.Point(342, 97)
@@ -178,6 +179,7 @@
         self.rbtn_anz_3.TabIndex = 6
         self.rbtn_anz_3.Text = "3"
         self.rbtn_anz_3.UseVisualStyleBackColor = true
+        self.rbtn_anz_3.CheckedChanged += System.EventHandler(self.rbtn_anz_3_CheckedChanged)
         //  rbtn_anz_4
         self.rbtn_anz_4.AutoSize = true
         self.rbtn_anz_4.Checked = true
@@ -188,6 +190,7 @@
         self.rbtn_anz_4.TabStop = true
         self.rbtn_anz_4.Text = "4"
         self.rbtn_anz_4.UseVisualStyleBackColor = true
+        self.rbtn_anz_4.CheckedChanged += System.EventHandler(self.rbtn_anz_4_CheckedChanged)
         //  tb_spieler1
         self.tb_spieler1.Location = System.Drawing.Point(193, 144)
         self.tb_spieler1.Name = "tb_spieler1"

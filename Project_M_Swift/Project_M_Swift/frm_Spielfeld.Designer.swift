@@ -141,6 +141,36 @@
     var lbl_wurfzahl: System.Windows.Forms.Label!
     var btn_aussetzen: System.Windows.Forms.Button!
     var btn_wuerfeln: System.Windows.Forms.Button!
+    
+    var lbl_anDerReihe: System.Windows.Forms.Label!
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    var lbl_spielerName4: System.Windows.Forms.Label!
+    var lbl_spielerName3: System.Windows.Forms.Label!
+    var lbl_spielerName2: System.Windows.Forms.Label!
+    var lbl_spielerName1: System.Windows.Forms.Label!
 
 	/// <summary>
 	/// Clean up any resources being used.
@@ -166,6 +196,7 @@
         self.btn_wuerfeln = System.Windows.Forms.Button()
         self.btn_aussetzen = System.Windows.Forms.Button()
         self.lbl_wurfzahl = System.Windows.Forms.Label()
+        self.lbl_anDerReihe = System.Windows.Forms.Label()
         self.sf_blue_4 = Project_M_Swift.Startfeld()
         self.sf_blue_3 = Project_M_Swift.Startfeld()
         self.sf_blue_5 = Project_M_Swift.Startfeld()
@@ -298,10 +329,14 @@
         self.btn_2_1 = Project_M_Swift.Feld()
         self.btn_1 = Project_M_Swift.Feld()
         self.btn_0_ziel = Project_M_Swift.Feld()
+        self.lbl_spielerName1 = System.Windows.Forms.Label()
+        self.lbl_spielerName2 = System.Windows.Forms.Label()
+        self.lbl_spielerName3 = System.Windows.Forms.Label()
+        self.lbl_spielerName4 = System.Windows.Forms.Label()
         self.SuspendLayout()
         //  btn_beenden
         self.btn_beenden.AutoSize = true
-        self.btn_beenden.Location = System.Drawing.Point(1145, 901)
+        self.btn_beenden.Location = System.Drawing.Point(1145, 853)
         self.btn_beenden.Name = "btn_beenden"
         self.btn_beenden.Size = System.Drawing.Size(75, 27)
         self.btn_beenden.TabIndex = 0
@@ -309,7 +344,7 @@
         self.btn_beenden.UseVisualStyleBackColor = true
         self.btn_beenden.Click += System.EventHandler(self.btn_beenden_Click)
         //  btn_wuerfeln
-        self.btn_wuerfeln.Location = System.Drawing.Point(12, 872)
+        self.btn_wuerfeln.Location = System.Drawing.Point(12, 824)
         self.btn_wuerfeln.Name = "btn_wuerfeln"
         self.btn_wuerfeln.Size = System.Drawing.Size(84, 23)
         self.btn_wuerfeln.TabIndex = 135
@@ -318,17 +353,24 @@
         self.btn_wuerfeln.Click += System.EventHandler(self.btn_wuerfeln_Click)
         //  btn_aussetzen
         self.btn_aussetzen.AutoSize = true
-        self.btn_aussetzen.Location = System.Drawing.Point(12, 901)
+        self.btn_aussetzen.Location = System.Drawing.Point(12, 853)
         self.btn_aussetzen.Name = "btn_aussetzen"
         self.btn_aussetzen.Size = System.Drawing.Size(84, 27)
         self.btn_aussetzen.TabIndex = 136
         self.btn_aussetzen.Text = "Aussetzen"
         self.btn_aussetzen.UseVisualStyleBackColor = true
+        self.btn_aussetzen.Click += System.EventHandler(self.btn_aussetzen_Click)
         //  lbl_wurfzahl
-        self.lbl_wurfzahl.Location = System.Drawing.Point(102, 872)
+        self.lbl_wurfzahl.Location = System.Drawing.Point(102, 824)
         self.lbl_wurfzahl.Name = "lbl_wurfzahl"
         self.lbl_wurfzahl.Size = System.Drawing.Size(35, 23)
         self.lbl_wurfzahl.TabIndex = 157
+        //  lbl_anDerReihe
+        self.lbl_anDerReihe.Location = System.Drawing.Point(225, 824)
+        self.lbl_anDerReihe.Name = "lbl_anDerReihe"
+        self.lbl_anDerReihe.Size = System.Drawing.Size(775, 56)
+        self.lbl_anDerReihe.TabIndex = 158
+        self.lbl_anDerReihe.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         //  sf_blue_4
         self.sf_blue_4.BackColor = System.Drawing.Color.Blue
         self.sf_blue_4.Location = System.Drawing.Point(1039, 708)
@@ -1385,10 +1427,39 @@
         self.btn_0_ziel.TabIndex = 2
         self.btn_0_ziel.UseVisualStyleBackColor = false
         self.btn_0_ziel.Click += System.EventHandler(self.btn_Click)
+        //  lbl_spielerName1
+        self.lbl_spielerName1.Location = System.Drawing.Point(80, 753)
+        self.lbl_spielerName1.Name = "lbl_spielerName1"
+        self.lbl_spielerName1.Size = System.Drawing.Size(210, 23)
+        self.lbl_spielerName1.TabIndex = 159
+        self.lbl_spielerName1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        //  lbl_spielerName2
+        self.lbl_spielerName2.Location = System.Drawing.Point(367, 753)
+        self.lbl_spielerName2.Name = "lbl_spielerName2"
+        self.lbl_spielerName2.Size = System.Drawing.Size(207, 17)
+        self.lbl_spielerName2.TabIndex = 160
+        self.lbl_spielerName2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        //  lbl_spielerName3
+        self.lbl_spielerName3.Location = System.Drawing.Point(651, 753)
+        self.lbl_spielerName3.Name = "lbl_spielerName3"
+        self.lbl_spielerName3.Size = System.Drawing.Size(207, 17)
+        self.lbl_spielerName3.TabIndex = 161
+        self.lbl_spielerName3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        //  lbl_spielerName4
+        self.lbl_spielerName4.Location = System.Drawing.Point(932, 753)
+        self.lbl_spielerName4.Name = "lbl_spielerName4"
+        self.lbl_spielerName4.Size = System.Drawing.Size(210, 17)
+        self.lbl_spielerName4.TabIndex = 162
+        self.lbl_spielerName4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         //  frm_Spielfeld
         self.AutoScaleDimensions = System.Drawing.SizeF(8.0, 16)
         self.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        self.ClientSize = System.Drawing.Size(1232, 936)
+        self.ClientSize = System.Drawing.Size(1232, 896)
+        self.Controls.Add(self.lbl_spielerName4)
+        self.Controls.Add(self.lbl_spielerName3)
+        self.Controls.Add(self.lbl_spielerName2)
+        self.Controls.Add(self.lbl_spielerName1)
+        self.Controls.Add(self.lbl_anDerReihe)
         self.Controls.Add(self.lbl_wurfzahl)
         self.Controls.Add(self.sf_blue_4)
         self.Controls.Add(self.sf_blue_3)
