@@ -48,8 +48,10 @@
         self.ClientSize = System.Drawing.Size(235, 139)
         self.Controls.Add(self.btn_beenden)
         self.Controls.Add(self.btn_neues_spiel)
+        self.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         self.Icon = resources.GetObject("$this.Icon") as! System.Drawing.Icon
         self.Name = "MainForm"
+        self.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         self.Text = "MainForm"
         self.ResumeLayout(false)
     }

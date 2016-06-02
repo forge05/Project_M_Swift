@@ -4,85 +4,28 @@
 	/// Required designer variable.
 	/// </summary>
 	var components: System.ComponentModel.IContainer! = nil
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     var btn_starten: System.Windows.Forms.Button!
     var btn_zurueck: System.Windows.Forms.Button!
-    var ckb_spieler4: System.Windows.Forms.CheckBox!
-    var ckb_spieler3: System.Windows.Forms.CheckBox!
-    var ckb_spieler2: System.Windows.Forms.CheckBox!
-    var ckb_spieler1: System.Windows.Forms.CheckBox!
-    var cmb_spieler4: System.Windows.Forms.ComboBox!
-    var cmb_spieler3: System.Windows.Forms.ComboBox!
-    var cmb_spieler2: System.Windows.Forms.ComboBox!
-    var cmb_spieler1: System.Windows.Forms.ComboBox!
-    var tb_spieler4: System.Windows.Forms.TextBox!
-    var tb_spieler3: System.Windows.Forms.TextBox!
-    var tb_spieler2: System.Windows.Forms.TextBox!
-    var tb_spieler1: System.Windows.Forms.TextBox!
+    var ckb_player4: System.Windows.Forms.CheckBox!
+    var ckb_player3: System.Windows.Forms.CheckBox!
+    var ckb_player2: System.Windows.Forms.CheckBox!
+    var ckb_player1: System.Windows.Forms.CheckBox!
+    var cmb_player4 : System.Windows.Forms.ComboBox!
+    var cmb_player3: System.Windows.Forms.ComboBox!
+    var cmb_player2: System.Windows.Forms.ComboBox!
+    var cmb_player1: System.Windows.Forms.ComboBox!
     var rbtn_anz_4: System.Windows.Forms.RadioButton!
     var rbtn_anz_3: System.Windows.Forms.RadioButton!
     var rbtn_anz_2: System.Windows.Forms.RadioButton!
-    var lbl_spieler4: System.Windows.Forms.Label!
-    var lbl_spieler3: System.Windows.Forms.Label!
-    var lbl_spieler2: System.Windows.Forms.Label!
-    var lbl_spieler1: System.Windows.Forms.Label!
-    var lbl_anzahl_spieler: System.Windows.Forms.Label!
+    var lbl_player4: System.Windows.Forms.Label!
+    var lbl_player3: System.Windows.Forms.Label!
+    var lbl_player2: System.Windows.Forms.Label!
+    var lbl_player1: System.Windows.Forms.Label!
+    var lbl_anzahlPlayer: System.Windows.Forms.Label!
+    var tb_player4: System.Windows.Forms.TextBox!
+    var tb_player3: System.Windows.Forms.TextBox!
+    var tb_player2: System.Windows.Forms.TextBox!
+    var tb_player1: System.Windows.Forms.TextBox!
 
 	/// <summary>
 	/// Clean up any resources being used.
@@ -104,64 +47,64 @@
 	/// the contents of this method with the code editor.
 	/// </summary>
 	func InitializeComponent() {
-        self.lbl_anzahl_spieler = System.Windows.Forms.Label()
-        self.lbl_spieler1 = System.Windows.Forms.Label()
-        self.lbl_spieler2 = System.Windows.Forms.Label()
-        self.lbl_spieler3 = System.Windows.Forms.Label()
-        self.lbl_spieler4 = System.Windows.Forms.Label()
+        self.lbl_anzahlPlayer = System.Windows.Forms.Label()
+        self.lbl_player1 = System.Windows.Forms.Label()
+        self.lbl_player2 = System.Windows.Forms.Label()
+        self.lbl_player3 = System.Windows.Forms.Label()
+        self.lbl_player4 = System.Windows.Forms.Label()
         self.rbtn_anz_2 = System.Windows.Forms.RadioButton()
         self.rbtn_anz_3 = System.Windows.Forms.RadioButton()
         self.rbtn_anz_4 = System.Windows.Forms.RadioButton()
-        self.tb_spieler1 = System.Windows.Forms.TextBox()
-        self.tb_spieler2 = System.Windows.Forms.TextBox()
-        self.tb_spieler3 = System.Windows.Forms.TextBox()
-        self.tb_spieler4 = System.Windows.Forms.TextBox()
-        self.cmb_spieler1 = System.Windows.Forms.ComboBox()
-        self.cmb_spieler2 = System.Windows.Forms.ComboBox()
-        self.cmb_spieler3 = System.Windows.Forms.ComboBox()
-        self.cmb_spieler4 = System.Windows.Forms.ComboBox()
-        self.ckb_spieler1 = System.Windows.Forms.CheckBox()
-        self.ckb_spieler2 = System.Windows.Forms.CheckBox()
-        self.ckb_spieler3 = System.Windows.Forms.CheckBox()
-        self.ckb_spieler4 = System.Windows.Forms.CheckBox()
+        self.tb_player1 = System.Windows.Forms.TextBox()
+        self.tb_player2 = System.Windows.Forms.TextBox()
+        self.tb_player3 = System.Windows.Forms.TextBox()
+        self.tb_player4 = System.Windows.Forms.TextBox()
+        self.cmb_player1 = System.Windows.Forms.ComboBox()
+        self.cmb_player2 = System.Windows.Forms.ComboBox()
+        self.cmb_player3 = System.Windows.Forms.ComboBox()
+        self.cmb_player4 = System.Windows.Forms.ComboBox()
+        self.ckb_player1 = System.Windows.Forms.CheckBox()
+        self.ckb_player2 = System.Windows.Forms.CheckBox()
+        self.ckb_player3 =  System.Windows.Forms.CheckBox()
+        self.ckb_player4 = System.Windows.Forms.CheckBox()
         self.btn_zurueck = System.Windows.Forms.Button()
         self.btn_starten = System.Windows.Forms.Button()
         self.SuspendLayout()
-        //  lbl_anzahl_spieler
-        self.lbl_anzahl_spieler.AutoSize = true
-        self.lbl_anzahl_spieler.Location = System.Drawing.Point(184, 97)
-        self.lbl_anzahl_spieler.Name = "lbl_anzahl_spieler"
-        self.lbl_anzahl_spieler.Size = System.Drawing.Size(107, 17)
-        self.lbl_anzahl_spieler.TabIndex = 0
-        self.lbl_anzahl_spieler.Text = "Anzahl Spieler?"
-        //  lbl_spieler1
-        self.lbl_spieler1.AutoSize = true
-        self.lbl_spieler1.Location = System.Drawing.Point(98, 147)
-        self.lbl_spieler1.Name = "lbl_spieler1"
-        self.lbl_spieler1.Size = System.Drawing.Size(64, 17)
-        self.lbl_spieler1.TabIndex = 1
-        self.lbl_spieler1.Text = "Spieler 1"
-        //  lbl_spieler2
-        self.lbl_spieler2.AutoSize = true
-        self.lbl_spieler2.Location = System.Drawing.Point(98, 188)
-        self.lbl_spieler2.Name = "lbl_spieler2"
-        self.lbl_spieler2.Size = System.Drawing.Size(64, 17)
-        self.lbl_spieler2.TabIndex = 2
-        self.lbl_spieler2.Text = "Spieler 2"
-        //  lbl_spieler3
-        self.lbl_spieler3.AutoSize = true
-        self.lbl_spieler3.Location = System.Drawing.Point(98, 224)
-        self.lbl_spieler3.Name = "lbl_spieler3"
-        self.lbl_spieler3.Size = System.Drawing.Size(64, 17)
-        self.lbl_spieler3.TabIndex = 3
-        self.lbl_spieler3.Text = "Spieler 3"
-        //  lbl_spieler4
-        self.lbl_spieler4.AutoSize = true
-        self.lbl_spieler4.Location = System.Drawing.Point(98, 259)
-        self.lbl_spieler4.Name = "lbl_spieler4"
-        self.lbl_spieler4.Size = System.Drawing.Size(64, 17)
-        self.lbl_spieler4.TabIndex = 4
-        self.lbl_spieler4.Text = "Spieler 4"
+        //  lbl_anzahl_player
+        self.lbl_anzahlPlayer.AutoSize = true
+        self.lbl_anzahlPlayer.Location = System.Drawing.Point(184, 97)
+        self.lbl_anzahlPlayer.Name = "lbl_anzahlPlayer"
+        self.lbl_anzahlPlayer.Size = System.Drawing.Size(107, 17)
+        self.lbl_anzahlPlayer.TabIndex = 0
+        self.lbl_anzahlPlayer.Text = "Anzahl player?"
+        //  lbl_player1
+        self.lbl_player1.AutoSize = true
+        self.lbl_player1.Location = System.Drawing.Point(98, 147)
+        self.lbl_player1.Name = "lbl_player1"
+        self.lbl_player1.Size = System.Drawing.Size(64, 17)
+        self.lbl_player1.TabIndex = 1
+        self.lbl_player1.Text = "player 1"
+        //  lbl_player2
+        self.lbl_player2.AutoSize = true
+        self.lbl_player2.Location = System.Drawing.Point(98, 188)
+        self.lbl_player2.Name = "lbl_player2"
+        self.lbl_player2.Size = System.Drawing.Size(64, 17)
+        self.lbl_player2.TabIndex = 2
+        self.lbl_player2.Text = "player 2"
+        //  lbl_player3
+        self.lbl_player3.AutoSize = true
+        self.lbl_player3.Location = System.Drawing.Point(98, 224)
+        self.lbl_player3.Name = "lbl_player3"
+        self.lbl_player3.Size = System.Drawing.Size(64, 17)
+        self.lbl_player3.TabIndex = 3
+        self.lbl_player3.Text = "player 3"
+        //  lbl_player4
+        self.lbl_player4.AutoSize = true
+        self.lbl_player4.Location = System.Drawing.Point(98, 259)
+        self.lbl_player4.Name = "lbl_player4"
+        self.lbl_player4.Size = System.Drawing.Size(64, 17)
+        self.lbl_player4.TabIndex = 4
+        self.lbl_player4.Text = "player 4"
         //  rbtn_anz_2
         self.rbtn_anz_2.AutoSize = true
         self.rbtn_anz_2.Location = System.Drawing.Point(298, 97)
@@ -191,86 +134,86 @@
         self.rbtn_anz_4.Text = "4"
         self.rbtn_anz_4.UseVisualStyleBackColor = true
         self.rbtn_anz_4.CheckedChanged += System.EventHandler(self.rbtn_anz_4_CheckedChanged)
-        //  tb_spieler1
-        self.tb_spieler1.Location = System.Drawing.Point(193, 144)
-        self.tb_spieler1.Name = "tb_spieler1"
-        self.tb_spieler1.Size = System.Drawing.Size(100, 22)
-        self.tb_spieler1.TabIndex = 8
-        self.tb_spieler1.Text = "Red"
-        //  tb_spieler2
-        self.tb_spieler2.Location = System.Drawing.Point(193, 185)
-        self.tb_spieler2.Name = "tb_spieler2"
-        self.tb_spieler2.Size = System.Drawing.Size(100, 22)
-        self.tb_spieler2.TabIndex = 9
-        self.tb_spieler2.Text = "Green"
-        //  tb_spieler3
-        self.tb_spieler3.Location = System.Drawing.Point(193, 221)
-        self.tb_spieler3.Name = "tb_spieler3"
-        self.tb_spieler3.Size = System.Drawing.Size(100, 22)
-        self.tb_spieler3.TabIndex = 10
-        self.tb_spieler3.Text = "Yellow"
-        //  tb_spieler4
-        self.tb_spieler4.Location = System.Drawing.Point(193, 256)
-        self.tb_spieler4.Name = "tb_spieler4"
-        self.tb_spieler4.Size = System.Drawing.Size(100, 22)
-        self.tb_spieler4.TabIndex = 11
-        self.tb_spieler4.Text = "Blue"
-        //  cmb_spieler1
-        self.cmb_spieler1.FormattingEnabled = true
-        self.cmb_spieler1.Location = System.Drawing.Point(300, 144)
-        self.cmb_spieler1.Name = "cmb_spieler1"
-        self.cmb_spieler1.Size = System.Drawing.Size(121, 24)
-        self.cmb_spieler1.TabIndex = 12
-        //  cmb_spieler2
-        self.cmb_spieler2.FormattingEnabled = true
-        self.cmb_spieler2.Location = System.Drawing.Point(300, 185)
-        self.cmb_spieler2.Name = "cmb_spieler2"
-        self.cmb_spieler2.Size = System.Drawing.Size(121, 24)
-        self.cmb_spieler2.TabIndex = 13
-        //  cmb_spieler3
-        self.cmb_spieler3.FormattingEnabled = true
-        self.cmb_spieler3.Location = System.Drawing.Point(300, 221)
-        self.cmb_spieler3.Name = "cmb_spieler3"
-        self.cmb_spieler3.Size = System.Drawing.Size(121, 24)
-        self.cmb_spieler3.TabIndex = 14
-        //  cmb_spieler4
-        self.cmb_spieler4.FormattingEnabled = true
-        self.cmb_spieler4.Location = System.Drawing.Point(300, 256)
-        self.cmb_spieler4.Name = "cmb_spieler4"
-        self.cmb_spieler4.Size = System.Drawing.Size(121, 24)
-        self.cmb_spieler4.TabIndex = 15
-        //  ckb_spieler1
-        self.ckb_spieler1.AutoSize = true
-        self.ckb_spieler1.Location = System.Drawing.Point(439, 142)
-        self.ckb_spieler1.Name = "ckb_spieler1"
-        self.ckb_spieler1.Size = System.Drawing.Size(58, 21)
-        self.ckb_spieler1.TabIndex = 16
-        self.ckb_spieler1.Text = "CPU"
-        self.ckb_spieler1.UseVisualStyleBackColor = true
-        //  ckb_spieler2
-        self.ckb_spieler2.AutoSize = true
-        self.ckb_spieler2.Location = System.Drawing.Point(439, 187)
-        self.ckb_spieler2.Name = "ckb_spieler2"
-        self.ckb_spieler2.Size = System.Drawing.Size(58, 21)
-        self.ckb_spieler2.TabIndex = 17
-        self.ckb_spieler2.Text = "CPU"
-        self.ckb_spieler2.UseVisualStyleBackColor = true
-        //  ckb_spieler3
-        self.ckb_spieler3.AutoSize = true
-        self.ckb_spieler3.Location = System.Drawing.Point(439, 223)
-        self.ckb_spieler3.Name = "ckb_spieler3"
-        self.ckb_spieler3.Size = System.Drawing.Size(58, 21)
-        self.ckb_spieler3.TabIndex = 18
-        self.ckb_spieler3.Text = "CPU"
-        self.ckb_spieler3.UseVisualStyleBackColor = true
-        //  ckb_spieler4
-        self.ckb_spieler4.AutoSize = true
-        self.ckb_spieler4.Location = System.Drawing.Point(439, 258)
-        self.ckb_spieler4.Name = "ckb_spieler4"
-        self.ckb_spieler4.Size = System.Drawing.Size(58, 21)
-        self.ckb_spieler4.TabIndex = 19
-        self.ckb_spieler4.Text = "CPU"
-        self.ckb_spieler4.UseVisualStyleBackColor = true
+        //  tb_player1
+        self.tb_player1.Location = System.Drawing.Point(193, 144)
+        self.tb_player1.Name = "tb_player1"
+        self.tb_player1.Size = System.Drawing.Size(100, 22)
+        self.tb_player1.TabIndex = 8
+        self.tb_player1.Text = "Red"
+        //  tb_player2
+        self.tb_player2.Location = System.Drawing.Point(193, 185)
+        self.tb_player2.Name = "tb_player2"
+        self.tb_player2.Size = System.Drawing.Size(100, 22)
+        self.tb_player2.TabIndex = 9
+        self.tb_player2.Text = "Green"
+        //  tb_player3
+        self.tb_player3.Location = System.Drawing.Point(193, 221)
+        self.tb_player3.Name = "tb_player3"
+        self.tb_player3.Size = System.Drawing.Size(100, 22)
+        self.tb_player3.TabIndex = 10
+        self.tb_player3.Text = "Yellow"
+        //  tb_player4
+        self.tb_player4.Location = System.Drawing.Point(193, 256)
+        self.tb_player4.Name = "tb_player4"
+        self.tb_player4.Size = System.Drawing.Size(100, 22)
+        self.tb_player4.TabIndex = 11
+        self.tb_player4.Text = "Blue"
+        //  cmb_player1
+        self.cmb_player1.FormattingEnabled = true
+        self.cmb_player1.Location = System.Drawing.Point(300, 144)
+        self.cmb_player1.Name = "cmb_player1"
+        self.cmb_player1.Size = System.Drawing.Size(121, 24)
+        self.cmb_player1.TabIndex = 12
+        //  cmb_player2
+        self.cmb_player2.FormattingEnabled = true
+        self.cmb_player2.Location = System.Drawing.Point(300, 185)
+        self.cmb_player2.Name = "cmb_player2"
+        self.cmb_player2.Size = System.Drawing.Size(121, 24)
+        self.cmb_player2.TabIndex = 13
+        //  cmb_player3
+        self.cmb_player3.FormattingEnabled = true
+        self.cmb_player3.Location = System.Drawing.Point(300, 221)
+        self.cmb_player3.Name = "cmb_player3"
+        self.cmb_player3.Size = System.Drawing.Size(121, 24)
+        self.cmb_player3.TabIndex = 14
+        //  cmb_player4
+        self.cmb_player4.FormattingEnabled = true
+        self.cmb_player4.Location = System.Drawing.Point(300, 256)
+        self.cmb_player4.Name = "cmb_player4"
+        self.cmb_player4.Size = System.Drawing.Size(121, 24)
+        self.cmb_player4.TabIndex = 15
+        //  ckb_player1
+        self.ckb_player1.AutoSize = true
+        self.ckb_player1.Location = System.Drawing.Point(439, 142)
+        self.ckb_player1.Name = "ckb_player1"
+        self.ckb_player1.Size = System.Drawing.Size(58, 21)
+        self.ckb_player1.TabIndex = 16
+        self.ckb_player1.Text = "CPU"
+        self.ckb_player1.UseVisualStyleBackColor = true
+        //  ckb_player2
+        self.ckb_player2.AutoSize = true
+        self.ckb_player2.Location = System.Drawing.Point(439, 187)
+        self.ckb_player2.Name = "ckb_player2"
+        self.ckb_player2.Size = System.Drawing.Size(58, 21)
+        self.ckb_player2.TabIndex = 17
+        self.ckb_player2.Text = "CPU"
+        self.ckb_player2.UseVisualStyleBackColor = true
+        //  ckb_player3
+        self.ckb_player3.AutoSize = true
+        self.ckb_player3.Location = System.Drawing.Point(439, 223)
+        self.ckb_player3.Name = "ckb_player3"
+        self.ckb_player3.Size = System.Drawing.Size(58, 21)
+        self.ckb_player3.TabIndex = 18
+        self.ckb_player3.Text = "CPU"
+        self.ckb_player3.UseVisualStyleBackColor = true
+        //  ckb_player4
+        self.ckb_player4.AutoSize = true
+        self.ckb_player4.Location = System.Drawing.Point(439, 258)
+        self.ckb_player4.Name = "ckb_player4"
+        self.ckb_player4.Size = System.Drawing.Size(58, 21)
+        self.ckb_player4.TabIndex = 19 
+        self.ckb_player4.Text = "ckb_player4"
+        self.ckb_player4.UseVisualStyleBackColor = true
         //  btn_zurueck
         self.btn_zurueck.Location = System.Drawing.Point(101, 297)
         self.btn_zurueck.Name = "btn_zurueck"
@@ -293,27 +236,29 @@
         self.ClientSize = System.Drawing.Size(590, 390)
         self.Controls.Add(self.btn_starten)
         self.Controls.Add(self.btn_zurueck)
-        self.Controls.Add(self.ckb_spieler4)
-        self.Controls.Add(self.ckb_spieler3)
-        self.Controls.Add(self.ckb_spieler2)
-        self.Controls.Add(self.ckb_spieler1)
-        self.Controls.Add(self.cmb_spieler4)
-        self.Controls.Add(self.cmb_spieler3)
-        self.Controls.Add(self.cmb_spieler2)
-        self.Controls.Add(self.cmb_spieler1)
-        self.Controls.Add(self.tb_spieler4)
-        self.Controls.Add(self.tb_spieler3)
-        self.Controls.Add(self.tb_spieler2)
-        self.Controls.Add(self.tb_spieler1)
+        self.Controls.Add(self.ckb_player4)
+        self.Controls.Add(self.ckb_player3)
+        self.Controls.Add(self.ckb_player2)
+        self.Controls.Add(self.ckb_player1)
+        self.Controls.Add(self.cmb_player4)
+        self.Controls.Add(self.cmb_player3)
+        self.Controls.Add(self.cmb_player2)
+        self.Controls.Add(self.cmb_player1)
+        self.Controls.Add(self.tb_player4)
+        self.Controls.Add(self.tb_player3)
+        self.Controls.Add(self.tb_player2)
+        self.Controls.Add(self.tb_player1)
         self.Controls.Add(self.rbtn_anz_4)
         self.Controls.Add(self.rbtn_anz_3)
         self.Controls.Add(self.rbtn_anz_2)
-        self.Controls.Add(self.lbl_spieler4)
-        self.Controls.Add(self.lbl_spieler3)
-        self.Controls.Add(self.lbl_spieler2)
-        self.Controls.Add(self.lbl_spieler1)
-        self.Controls.Add(self.lbl_anzahl_spieler)
+        self.Controls.Add(self.lbl_player4)
+        self.Controls.Add(self.lbl_player3)
+        self.Controls.Add(self.lbl_player2)
+        self.Controls.Add(self.lbl_player1)
+        self.Controls.Add(self.lbl_anzahlPlayer)
+        self.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         self.Name = "frm_Einstellungen"
+        self.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         self.Text = "frm_Einstellungen"
         self.FormClosing += System.Windows.Forms.FormClosingEventHandler(self.frm_Einstellungen_FormClosing)
         self.Load += System.EventHandler(self.frm_Einstellungen_Load)

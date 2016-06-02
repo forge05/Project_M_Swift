@@ -38,29 +38,29 @@ public __partial class frm_Einstellungen: Form {
     }
 
     func rbtn_anz_3_CheckedChanged(_ sender: System.Object!, _ e: System.EventArgs!) {
-        tb_spieler3.Enabled = true
-        cmb_spieler3.Enabled = true
-        ckb_spieler3.Enabled = true
-        tb_spieler4.Enabled = false 
-        cmb_spieler4.Enabled = false
-        ckb_spieler4.Enabled = false
+        tb_player3.Enabled = true
+        cmb_player3.Enabled = true
+        ckb_player3.Enabled = true
+        tb_player4.Enabled = false 
+        cmb_player4.Enabled = false
+        ckb_player4.Enabled = false
     }
 
     func rbtn_anz_2_CheckedChanged(_ sender: System.Object!, _ e: System.EventArgs!) {
-        tb_spieler3.Enabled = false
-        cmb_spieler3.Enabled = false
-        ckb_spieler3.Enabled = false
-        tb_spieler4.Enabled = false 
-        cmb_spieler4.Enabled = false
-        ckb_spieler4.Enabled = false
+        tb_player3.Enabled = false
+        cmb_player3.Enabled = false
+        ckb_player3.Enabled = false
+        tb_player4.Enabled = false 
+        cmb_player4.Enabled = false
+        ckb_player4.Enabled = false
     }
 
     func rbtn_anz_4_CheckedChanged(_ sender: System.Object!, _ e: System.EventArgs!) {
-        tb_spieler3.Enabled = true
-        cmb_spieler3.Enabled = true
-        ckb_spieler3.Enabled = false
-        tb_spieler4.Enabled = true 
-        cmb_spieler4.Enabled = true
-        ckb_spieler4.Enabled = false
+        tb_player3.Enabled = true
+        cmb_player3.Enabled = true
+        ckb_player3.Enabled = false
+        tb_player4.Enabled = true 
+        cmb_player4.Enabled = true
+        ckb_player4.Enabled = false
     }
 }

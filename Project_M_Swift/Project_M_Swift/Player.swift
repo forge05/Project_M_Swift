@@ -7,9 +7,10 @@ public class Player {
 
     var spielerFarbe : Feld.Content?
     var spielerName : String?
+    var startfeldArray : Startfeld[]
 
-    public init(){
-
+    public init(startfelder : Startfeld[]){
+        startfeldArray = startfelder
     }
 
 }

@@ -6,7 +6,8 @@ import System.Text
 public class Spieler : Player{
 
 
-    public init( inhalt : Feld.Content , name : String?){
+    public init( inhalt : Feld.Content , name : String?, startfelder : Startfeld...){
+        super.init(startfelder : startfelder)
         self.spielerFarbe = inhalt
         self.spielerName = name
     }
