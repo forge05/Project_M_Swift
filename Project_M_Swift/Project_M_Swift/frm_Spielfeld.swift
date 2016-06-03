@@ -306,7 +306,6 @@ public __partial class frm_Spielfeld: Form {
                 }
             }
         }
-
     }
 
     func blockieren(wirdBlock : Feld){
@@ -387,6 +386,7 @@ public __partial class frm_Spielfeld: Form {
     func resetSpielfeld(){
         setAttributes()
         //booleans zurücksetzen
+        someoneWon = false
         blockZuSetzen = false
         schonGewuerfelt = false
         //neu zeichnen

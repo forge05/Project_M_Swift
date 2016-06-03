@@ -1150,7 +1150,7 @@
         self.btn_21_1.Click += System.EventHandler(self.btn_Click)
         //  btn_11_2
         self.btn_11_2.BackColor = System.Drawing.Color.Black
-        self.btn_11_2.Location = System.Drawing.Point(93, 154)
+        self.btn_11_2.Location = System.Drawing.Point(1308, 154)
         self.btn_11_2.Name = "btn_11_2"
         self.btn_11_2.Size = System.Drawing.Size(75, 43)
         self.btn_11_2.TabIndex = 39
@@ -1206,7 +1206,7 @@
         self.btn_17_2.Click += System.EventHandler(self.btn_Click)
         //  btn_18_2
         self.btn_18_2.BackColor = System.Drawing.Color.Black
-        self.btn_18_2.Location = System.Drawing.Point(1308, 154)
+        self.btn_18_2.Location = System.Drawing.Point(741, 154)
         self.btn_18_2.Name = "btn_18_2"
         self.btn_18_2.Size = System.Drawing.Size(75, 43)
         self.btn_18_2.TabIndex = 32
@@ -1222,7 +1222,7 @@
         self.btn_11_1.Click += System.EventHandler(self.btn_Click)
         //  btn_12_1
         self.btn_12_1.BackColor = System.Drawing.Color.Black
-        self.btn_12_1.Location = System.Drawing.Point(741, 154)
+        self.btn_12_1.Location = System.Drawing.Point(93, 154)
         self.btn_12_1.Name = "btn_12_1"
         self.btn_12_1.Size = System.Drawing.Size(75, 43)
         self.btn_12_1.TabIndex = 30
@@ -1230,7 +1230,7 @@
         self.btn_12_1.Click += System.EventHandler(self.btn_Click)
         //  btn_13_1
         self.btn_13_1.BackColor = System.Drawing.Color.Black
-        self.btn_13_1.Location = System.Drawing.Point(579, 154)
+        self.btn_13_1.Location = System.Drawing.Point(174, 154)
         self.btn_13_1.Name = "btn_13_1"
         self.btn_13_1.Size = System.Drawing.Size(75, 43)
         self.btn_13_1.TabIndex = 29
@@ -1238,7 +1238,7 @@
         self.btn_13_1.Click += System.EventHandler(self.btn_Click)
         //  btn_14_1
         self.btn_14_1.BackColor = System.Drawing.Color.Black
-        self.btn_14_1.Location = System.Drawing.Point(498, 154)
+        self.btn_14_1.Location = System.Drawing.Point(255, 154)
         self.btn_14_1.Name = "btn_14_1"
         self.btn_14_1.Size = System.Drawing.Size(75, 43)
         self.btn_14_1.TabIndex = 28
@@ -1246,7 +1246,7 @@
         self.btn_14_1.Click += System.EventHandler(self.btn_Click)
         //  btn_15_1
         self.btn_15_1.BackColor = System.Drawing.Color.Black
-        self.btn_15_1.Location = System.Drawing.Point(417, 154)
+        self.btn_15_1.Location = System.Drawing.Point(336, 154)
         self.btn_15_1.Name = "btn_15_1"
         self.btn_15_1.Size = System.Drawing.Size(75, 43)
         self.btn_15_1.TabIndex = 27
@@ -1254,7 +1254,7 @@
         self.btn_15_1.Click += System.EventHandler(self.btn_Click)
         //  btn_16_1
         self.btn_16_1.BackColor = System.Drawing.Color.Black
-        self.btn_16_1.Location = System.Drawing.Point(336, 154)
+        self.btn_16_1.Location = System.Drawing.Point(417, 154)
         self.btn_16_1.Name = "btn_16_1"
         self.btn_16_1.Size = System.Drawing.Size(75, 43)
         self.btn_16_1.TabIndex = 26
@@ -1262,7 +1262,7 @@
         self.btn_16_1.Click += System.EventHandler(self.btn_Click)
         //  btn_17_1
         self.btn_17_1.BackColor = System.Drawing.Color.Black
-        self.btn_17_1.Location = System.Drawing.Point(255, 154)
+        self.btn_17_1.Location = System.Drawing.Point(498, 154)
         self.btn_17_1.Name = "btn_17_1"
         self.btn_17_1.Size = System.Drawing.Size(75, 43)
         self.btn_17_1.TabIndex = 25
@@ -1270,7 +1270,7 @@
         self.btn_17_1.Click += System.EventHandler(self.btn_Click)
         //  btn_18_1
         self.btn_18_1.BackColor = System.Drawing.Color.Black
-        self.btn_18_1.Location = System.Drawing.Point(174, 154)
+        self.btn_18_1.Location = System.Drawing.Point(580, 154)
         self.btn_18_1.Name = "btn_18_1"
         self.btn_18_1.Size = System.Drawing.Size(75, 43)
         self.btn_18_1.TabIndex = 24
