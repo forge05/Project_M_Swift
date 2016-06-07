@@ -65,44 +65,44 @@
         self.cmb_player4 = System.Windows.Forms.ComboBox()
         self.ckb_player1 = System.Windows.Forms.CheckBox()
         self.ckb_player2 = System.Windows.Forms.CheckBox()
-        self.ckb_player3 =  System.Windows.Forms.CheckBox()
+        self.ckb_player3 = System.Windows.Forms.CheckBox()
         self.ckb_player4 = System.Windows.Forms.CheckBox()
         self.btn_zurueck = System.Windows.Forms.Button()
         self.btn_starten = System.Windows.Forms.Button()
         self.SuspendLayout()
-        //  lbl_anzahl_player
+        //  lbl_anzahlPlayer
         self.lbl_anzahlPlayer.AutoSize = true
         self.lbl_anzahlPlayer.Location = System.Drawing.Point(184, 97)
         self.lbl_anzahlPlayer.Name = "lbl_anzahlPlayer"
-        self.lbl_anzahlPlayer.Size = System.Drawing.Size(107, 17)
+        self.lbl_anzahlPlayer.Size = System.Drawing.Size(102, 17)
         self.lbl_anzahlPlayer.TabIndex = 0
         self.lbl_anzahlPlayer.Text = "Anzahl player?"
         //  lbl_player1
         self.lbl_player1.AutoSize = true
         self.lbl_player1.Location = System.Drawing.Point(98, 147)
         self.lbl_player1.Name = "lbl_player1"
-        self.lbl_player1.Size = System.Drawing.Size(64, 17)
+        self.lbl_player1.Size = System.Drawing.Size(59, 17)
         self.lbl_player1.TabIndex = 1
         self.lbl_player1.Text = "player 1"
         //  lbl_player2
         self.lbl_player2.AutoSize = true
         self.lbl_player2.Location = System.Drawing.Point(98, 188)
         self.lbl_player2.Name = "lbl_player2"
-        self.lbl_player2.Size = System.Drawing.Size(64, 17)
+        self.lbl_player2.Size = System.Drawing.Size(59, 17)
         self.lbl_player2.TabIndex = 2
         self.lbl_player2.Text = "player 2"
         //  lbl_player3
         self.lbl_player3.AutoSize = true
         self.lbl_player3.Location = System.Drawing.Point(98, 224)
         self.lbl_player3.Name = "lbl_player3"
-        self.lbl_player3.Size = System.Drawing.Size(64, 17)
+        self.lbl_player3.Size = System.Drawing.Size(59, 17)
         self.lbl_player3.TabIndex = 3
         self.lbl_player3.Text = "player 3"
         //  lbl_player4
         self.lbl_player4.AutoSize = true
         self.lbl_player4.Location = System.Drawing.Point(98, 259)
         self.lbl_player4.Name = "lbl_player4"
-        self.lbl_player4.Size = System.Drawing.Size(64, 17)
+        self.lbl_player4.Size = System.Drawing.Size(59, 17)
         self.lbl_player4.TabIndex = 4
         self.lbl_player4.Text = "player 4"
         //  rbtn_anz_2
@@ -211,8 +211,8 @@
         self.ckb_player4.Location = System.Drawing.Point(439, 258)
         self.ckb_player4.Name = "ckb_player4"
         self.ckb_player4.Size = System.Drawing.Size(58, 21)
-        self.ckb_player4.TabIndex = 19 
-        self.ckb_player4.Text = "ckb_player4"
+        self.ckb_player4.TabIndex = 19
+        self.ckb_player4.Text = "CPU"
         self.ckb_player4.UseVisualStyleBackColor = true
         //  btn_zurueck
         self.btn_zurueck.Location = System.Drawing.Point(101, 297)

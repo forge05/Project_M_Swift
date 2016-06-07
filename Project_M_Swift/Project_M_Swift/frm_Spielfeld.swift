@@ -235,22 +235,18 @@ public __partial class frm_Spielfeld: Form {
                 
             }
         }
-        else {
-            if aktuellesFeld.inhalt != playerContent{
-                aktuellesFeld.BackColor = Color.Brown
-            }
+        else if aktuellesFeld.inhalt != playerContent{
+            aktuellesFeld.BackColor = Color.Brown
             if aktuellesFeld.inhalt == Feld.Content.BLOCK{
                 aktuellesFeld.Text = "Block"
             }
             if aktuellesFeld.inhalt!.rawValue <= playerAnzahl && aktuellesFeld.inhalt != playerContent{
-                aktuellesFeld.Text = "Gegner"
-                aktuellesFeld.ForeColor = getColorFromContent(aktuellesFeld.inhalt)
-            }
-            if aktuellesFeld.inhalt == Feld.Content.GOAL{
+            aktuellesFeld.Text = "Gegner"
+            aktuellesFeld.ForeColor = getColorFromContent(aktuellesFeld.inhalt)
+            }else if aktuellesFeld.inhalt == Feld.Content.GOAL{
                 aktuellesFeld.Text = "Ziel!"
             }
         }
-
     }
 
     func ruecken(propTer : Feld , propDer : Feld!){
@@ -267,14 +263,11 @@ public __partial class frm_Spielfeld: Form {
 
         switch ursprungscontent!.rawValue {                       //eigene Figuren können nicht geschlagen werden
             case 1:
-                schlagen(ursprungscontent)
-                break;
+                fallthrough
             case 2:
-                schlagen(ursprungscontent)
-                break;
+                fallthrough
             case 3:
-                schlagen(ursprungscontent)
-                break;
+                fallthrough
             case 4:
                 schlagen(ursprungscontent)
                 break;
@@ -341,12 +334,9 @@ public __partial class frm_Spielfeld: Form {
                             propagiereRueckOptionen(feld, spruenge : wurfzahl, altesFeld : feld, playerContent : feld.inhalt)
                         }     
                     }
-                } else {
-                    //unterste Reihe tabu                    nur leere Felder   
-                    if feld.entfernung_zum_ziel <= 36 && feld.inhalt == Feld.Content.BLACK{                                                                   
+                } else  if feld.entfernung_zum_ziel <= 36 && feld.inhalt == Feld.Content.BLACK{                                                                   
                         blockieren(feld)
                         nextPlayer()
-                    }
                 }
             }
         }
@@ -396,9 +386,9 @@ public __partial class frm_Spielfeld: Form {
         for c in self.Controls{
             if let feld = c as? Feld{
                 feld.BackColor = getColorFromContent(feld.inhalt)
-            }
-            else if let sf = c as? Startfeld{
-                sf.schonGeruecktWorden = false
+                if let sf = c as? Startfeld{
+                    sf.schonGeruecktWorden = false
+                }
             }
         }
         //Buttons disablen
