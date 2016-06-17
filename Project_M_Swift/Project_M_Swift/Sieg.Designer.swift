@@ -61,14 +61,16 @@
         self.btn_okay.Text = "Okay"
         self.btn_okay.UseVisualStyleBackColor = true
         self.btn_okay.Click += System.EventHandler(self.btn_okay_Click)
-        //  Sieg
+        //  frm_Sieg
         self.AutoScaleDimensions = System.Drawing.SizeF(8.0, 16)
         self.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         self.ClientSize = System.Drawing.Size(324, 203)
         self.Controls.Add(self.btn_okay)
         self.Controls.Add(self.lbl_gewinnerName)
         self.Controls.Add(self.label1)
-        self.Name = "Sieg"
+        self.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        self.Name = "frm_Sieg"
+        self.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         self.Text = "Sieg"
         self.ResumeLayout(false)
         self.PerformLayout()

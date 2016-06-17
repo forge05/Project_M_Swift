@@ -47,11 +47,6 @@ public __partial class frm_Spielfeld: Form {
 
 
     func nextPlayer(){
-        //        an_der_Reihe_Index++
-        //        if(an_der_Reihe_Index >= playerAnzahl){
-        //            //label auktualisiert
-        //            an_der_Reihe_Index = 0
-        //        }
         if !(iter.MoveNext()){
             iter.Reset()
             iter.MoveNext()
@@ -62,7 +57,6 @@ public __partial class frm_Spielfeld: Form {
         schonGewuerfelt = false
         btn_wuerfeln.Enabled = true
         btn_aussetzen.Enabled = false
-        //propagiereZuruecksetzen()
         playerButtonsDisablen()
         
 
@@ -152,11 +146,6 @@ public __partial class frm_Spielfeld: Form {
                     }
                 }
             }
-            //comboBoxen auslesen
-            //ComboBox cmb = (ComboBox)sender;
-            //foreach ComboBox : Form1.Controls
-            //if (cmb == cmb_spielerfarbe1)
-            //cmb_spielerfarbe2.Items.Remove(cmb.SelectedItem);
         }
         if CPU1 {
             player_1 = CPU (inhalt : Feld.Content.RED , name : playerName1, startfelder : sf_red_1, sf_red_2, sf_red_3, sf_red_4, sf_red_5)

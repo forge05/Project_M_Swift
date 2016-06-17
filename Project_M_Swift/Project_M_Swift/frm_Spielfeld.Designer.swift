@@ -206,6 +206,8 @@
         self.lbl_playerName2 = System.Windows.Forms.Label()
         self.lbl_playerName3 = System.Windows.Forms.Label()
         self.lbl_playerName4 = System.Windows.Forms.Label()
+        self.lbl_playerName1 = System.Windows.Forms.Label()
+        self.btn_reset = System.Windows.Forms.Button()
         self.sf_blue_4 = Project_M_Swift.Startfeld()
         self.sf_blue_3 = Project_M_Swift.Startfeld()
         self.sf_blue_5 = Project_M_Swift.Startfeld()
@@ -338,8 +340,6 @@
         self.btn_2_1 = Project_M_Swift.Feld()
         self.btn_1 = Project_M_Swift.Feld()
         self.btn_0_ziel = Project_M_Swift.Feld()
-        self.lbl_playerName1 = System.Windows.Forms.Label()
-        self.btn_reset = System.Windows.Forms.Button()
         self.SuspendLayout()
         //  btn_beenden
         self.btn_beenden.AutoSize = true
@@ -396,6 +396,20 @@
         self.lbl_playerName4.Size = System.Drawing.Size(240, 17)
         self.lbl_playerName4.TabIndex = 162
         self.lbl_playerName4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        //  lbl_playerName1
+        self.lbl_playerName1.Location = System.Drawing.Point(90, 843)
+        self.lbl_playerName1.Name = "lbl_playerName1"
+        self.lbl_playerName1.Size = System.Drawing.Size(240, 17)
+        self.lbl_playerName1.TabIndex = 163
+        self.lbl_playerName1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        //  btn_reset
+        self.btn_reset.Location = System.Drawing.Point(1309, 881)
+        self.btn_reset.Name = "btn_reset"
+        self.btn_reset.Size = System.Drawing.Size(75, 27)
+        self.btn_reset.TabIndex = 164
+        self.btn_reset.Text = "reset"
+        self.btn_reset.UseVisualStyleBackColor = true
+        self.btn_reset.Click += System.EventHandler(self.btn_reset_Click)
         //  sf_blue_4
         self.sf_blue_4.BackColor = System.Drawing.Color.Blue
         self.sf_blue_4.Location = System.Drawing.Point(1187, 778)
@@ -1452,20 +1466,6 @@
         self.btn_0_ziel.TabIndex = 2
         self.btn_0_ziel.UseVisualStyleBackColor = false
         self.btn_0_ziel.Click += System.EventHandler(self.btn_Click)
-        //  lbl_playerName1
-        self.lbl_playerName1.Location = System.Drawing.Point(90, 843)
-        self.lbl_playerName1.Name = "lbl_playerName1"
-        self.lbl_playerName1.Size = System.Drawing.Size(240, 17)
-        self.lbl_playerName1.TabIndex = 163
-        self.lbl_playerName1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        //  btn_reset
-        self.btn_reset.Location = System.Drawing.Point(1309, 881)
-        self.btn_reset.Name = "btn_reset"
-        self.btn_reset.Size = System.Drawing.Size(75, 27)
-        self.btn_reset.TabIndex = 164
-        self.btn_reset.Text = "reset"
-        self.btn_reset.UseVisualStyleBackColor = true
-        self.btn_reset.Click += System.EventHandler(self.btn_reset_Click)
         //  frm_Spielfeld
         self.AutoScaleDimensions = System.Drawing.SizeF(8.0, 16)
         self.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -1612,6 +1612,7 @@
         self.Controls.Add(self.btn_1)
         self.Controls.Add(self.btn_0_ziel)
         self.Controls.Add(self.btn_beenden)
+        self.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         self.Name = "frm_Spielfeld"
         self.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         self.Text = "frm_Spielfeld"
