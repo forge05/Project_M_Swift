@@ -13,8 +13,6 @@ public __partial class frm_Spielfeld: Form {
     var frm_einstellungen : frm_Einstellungen
     var frm_menue : MainForm
     var wurfzahl : Int32?
-    var allePlayer : List<Player> 
-    var iter : IEnumerator<Player>
     var playerAnzahl : Integer!
     var playerName1 : String?
     var playerName2 : String?
@@ -31,6 +29,8 @@ public __partial class frm_Spielfeld: Form {
     var yourTurn : Player?
     //var an_der_Reihe_Index = -1
     var propagierender : Feld!
+    var allePlayer : List<Player> 
+    var iter : IEnumerator<Player>
 
 
 	public init(menue : MainForm, einstellungen : frm_Einstellungen)	{
@@ -98,7 +98,7 @@ public __partial class frm_Spielfeld: Form {
         var CPU3 = false
         var CPU4 = false
         //Startfelder außerhalb des Designers ausgrauen
-        for c in self.Controls{
+        for c in self.Controls {
             if let startfeld = c as? Startfeld{
                 startfeld.BackColor = Color.DarkGray
             }
@@ -242,9 +242,9 @@ public __partial class frm_Spielfeld: Form {
         var ursprungscontent = propTer.inhalt
         propTer.inhalt = propDer.inhalt
         propTer.BackColor = propDer.BackColor
-        if propDer is Startfeld {
-            propDer.Enabled = false
-            propDer.schonGeruecktWorden = true
+        if let sf = propDer as? Startfeld {
+            sf.Enabled = false
+            sf.schonGeruecktWorden = true
         } else {
             propDer.inhalt = Feld.Content.BLACK
             propDer.BackColor = Color.Black
@@ -299,10 +299,7 @@ public __partial class frm_Spielfeld: Form {
         someoneWon = true
         btn_wuerfeln.Enabled = false
         btn_aussetzen.Enabled = false
-        lbl_anDerReihe.Text = "Spieler " + yourTurn!.spielerName + ": Sie haben gewonnen!"
-        var siegesNachricht = frm_Sieg(myFrm : self , gewinner : yourTurn!.spielerName)
-        siegesNachricht.Show()
-        self.Hide()
+        MessageBox.Show("Spieler " + yourTurn!.spielerName + " hat das Spiel gewonnen!");
     }
     
     func btn_Click(_ sender: System.Object!, _ e: System.EventArgs!) {

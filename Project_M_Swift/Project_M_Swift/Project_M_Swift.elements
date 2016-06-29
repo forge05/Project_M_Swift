@@ -102,15 +102,6 @@
       <DesignableClassName>Project_M_Swift.MainForm</DesignableClassName>
     </Compile>
     <Compile Include="Player.swift" />
-    <Compile Include="Sieg.Designer.swift">
-      <SubType>Form</SubType>
-      <DependentUpon>Sieg.swift</DependentUpon>
-      <DesignableClassName>Project_M_Swift.frm_Sieg</DesignableClassName>
-    </Compile>
-    <Compile Include="Sieg.swift">
-      <SubType>Form</SubType>
-      <DesignableClassName>Project_M_Swift.frm_Sieg</DesignableClassName>
-    </Compile>
     <Compile Include="Spieler.swift" />
     <Compile Include="Startfeld.swift">
       <SubType>Component</SubType>
@@ -133,9 +124,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
     </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.swift" />
-    <EmbeddedResource Include="Sieg.resx">
-      <DependentUpon>Sieg.swift</DependentUpon>
-    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
     </None>
