@@ -25,9 +25,7 @@ public __partial class frm_Spielfeld: Form {
     var player_2 : Player!
     var player_3 : Player!
     var player_4 : Player!
-    var player : Player[4]
     var yourTurn : Player?
-    //var an_der_Reihe_Index = -1
     var propagierender : Feld!
     var allePlayer : List<Player> 
     var iter : IEnumerator<Player>
@@ -58,8 +56,7 @@ public __partial class frm_Spielfeld: Form {
         btn_wuerfeln.Enabled = true
         btn_aussetzen.Enabled = false
         playerButtonsDisablen()
-        
-
+        rueckOptionenZuruecksetzen()
     }
 
     func playerButtonsDisablen(){
@@ -230,8 +227,8 @@ public __partial class frm_Spielfeld: Form {
                 aktuellesFeld.Text = "Block"
             }
             if aktuellesFeld.inhalt!.rawValue <= playerAnzahl && aktuellesFeld.inhalt != playerContent{
-            aktuellesFeld.Text = "Gegner"
-            aktuellesFeld.ForeColor = getColorFromContent(aktuellesFeld.inhalt)
+                aktuellesFeld.Text = "Gegner"
+                aktuellesFeld.ForeColor = getColorFromContent(aktuellesFeld.inhalt)
             }else if aktuellesFeld.inhalt == Feld.Content.GOAL{
                 aktuellesFeld.Text = "Ziel!"
             }
@@ -259,15 +256,15 @@ public __partial class frm_Spielfeld: Form {
                 fallthrough
             case 4:
                 schlagen(ursprungscontent)
-                break;
+//            case 1...4: 
+//                schlagen(ursprungscontent)
             case 6:
                 gewinnen()
-                break;
             case 7:
-                lbl_anDerReihe.Text = "Spieler " + yourTurn!.spielerName + ": Bitte Block setzen. Hinweis: unterste Reihe tabu."
+                lbl_anDerReihe.Text = "Spieler " + yourTurn!.spielerName + 
+                ": Bitte Block setzen. Hinweis: unterste Reihe tabu."
                 blockZuSetzen = true
                 btn_aussetzen.Enabled = false
-                break;
             default:
                 break;
         }
@@ -321,8 +318,8 @@ public __partial class frm_Spielfeld: Form {
                         }     
                     }
                 } else  if feld.entfernung_zum_ziel <= 36 && feld.inhalt == Feld.Content.BLACK{                                                                   
-                        blockieren(feld)
-                        nextPlayer()
+                    blockieren(feld)
+                    nextPlayer()
                 }
             }
         }
