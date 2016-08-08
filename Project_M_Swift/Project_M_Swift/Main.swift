@@ -10,18 +10,18 @@ import System.Windows.Forms
 
 public __partial class MainForm : Form {
     
+    var frmEinstellungen : frm_Einstellungen
 	public init() {
-
 		InitializeComponent()
-    }
-
-    func btn_neues_spiel_Click(_ sender: System.Object!, _ e: System.EventArgs!) {
-        var frm_einstellungen = frm_Einstellungen(menue : self)
-        frm_einstellungen.Show()
-        self.Hide()
+        frmEinstellungen = frm_Einstellungen(myFrm : self)
     }
 
     func btn_beenden_Click(_ sender: System.Object!, _ e: System.EventArgs!) {
-        self.Dispose()
+        Dispose()
+    }
+
+    func btn_neues_spiel_Click(_ sender: System.Object!, _ e: System.EventArgs!) {
+        frmEinstellungen.Show()
+        self.Hide()
     }
 }

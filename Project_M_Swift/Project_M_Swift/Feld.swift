@@ -5,14 +5,15 @@ import System.Windows.Forms
 
 
 public class Feld : Button {
-    var entfernung_zum_ziel : Int32?
-    var inhalt : Content?
+    
     var nachbarn : Feld[]?
+    var inhalt : Content?
+    var entfernung_zum_ziel : Int32?
     
 
-    func setAttributes(c : Feld.Content , distanz : Integer){
+    func setAttributes(inhalt : Feld.Content , distanz : Integer){
+        self.inhalt = inhalt
         entfernung_zum_ziel = distanz
-        inhalt = c
     }
 
     func setNachbar(felder : Feld...){
@@ -20,7 +21,7 @@ public class Feld : Button {
     }
 
     public enum Content{
-       case RED = 1, GREEN = 2, YELLOW = 3, BLUE = 4, BLACK = 5, GOAL = 6, BLOCK = 7
-       //case RED = 1, GREEN, YELLOW, BLUE, BLACK, GOAL, BLOCK             //Nummerierung wird implizit fortgeführt
+        case RED = 1, GREEN = 2, YELLOW = 3, BLUE = 4, BLACK = 5, GOAL = 6, BLOCK = 7
+        //case RED = 1, GREEN, YELLOW, BLUE, BLACK, GOAL, BLOCK             //Nummerierung wird implizit fortgeführt
     }
 }
