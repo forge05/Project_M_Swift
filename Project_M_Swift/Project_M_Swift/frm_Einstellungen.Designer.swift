@@ -167,6 +167,7 @@
         self.tb_player4.Text = "Blue"
         //  ckb_player1
         self.ckb_player1.AutoSize = true
+        self.ckb_player1.Enabled = false
         self.ckb_player1.Location = System.Drawing.Point(234, 72)
         self.ckb_player1.Name = "ckb_player1"
         self.ckb_player1.Size = System.Drawing.Size(58, 21)
@@ -175,6 +176,7 @@
         self.ckb_player1.UseVisualStyleBackColor = true
         //  ckb_player2
         self.ckb_player2.AutoSize = true
+        self.ckb_player2.Enabled = false
         self.ckb_player2.Location = System.Drawing.Point(234, 100)
         self.ckb_player2.Name = "ckb_player2"
         self.ckb_player2.Size = System.Drawing.Size(58, 21)
@@ -183,6 +185,7 @@
         self.ckb_player2.UseVisualStyleBackColor = true
         //  ckb_player3
         self.ckb_player3.AutoSize = true
+        self.ckb_player3.Enabled = false
         self.ckb_player3.Location = System.Drawing.Point(234, 128)
         self.ckb_player3.Name = "ckb_player3"
         self.ckb_player3.Size = System.Drawing.Size(58, 21)
@@ -191,6 +194,7 @@
         self.ckb_player3.UseVisualStyleBackColor = true
         //  ckb_player4
         self.ckb_player4.AutoSize = true
+        self.ckb_player4.Enabled = false
         self.ckb_player4.Location = System.Drawing.Point(234, 156)
         self.ckb_player4.Name = "ckb_player4"
         self.ckb_player4.Size = System.Drawing.Size(58, 21)

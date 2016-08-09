@@ -142,7 +142,7 @@
     var btn_aussetzen: System.Windows.Forms.Button!
     var btn_wuerfeln: System.Windows.Forms.Button!
     
-    var lbl_anDerReihe: System.Windows.Forms.Label!
+    
     
     
     
@@ -178,6 +178,7 @@
     
     var btn_reset: System.Windows.Forms.Button!
     var pnl_alleFelder: System.Windows.Forms.Panel!
+    var lbl_Anleitungen: System.Windows.Forms.Label!
 
 	/// <summary>
 	/// Clean up any resources being used.
@@ -203,7 +204,7 @@
         self.btn_wuerfeln = System.Windows.Forms.Button()
         self.btn_aussetzen = System.Windows.Forms.Button()
         self.lbl_wurfzahl = System.Windows.Forms.Label()
-        self.lbl_anDerReihe = System.Windows.Forms.Label()
+        self.lbl_Anleitungen = System.Windows.Forms.Label()
         self.lbl_playerName2 = System.Windows.Forms.Label()
         self.lbl_playerName3 = System.Windows.Forms.Label()
         self.lbl_playerName4 = System.Windows.Forms.Label()
@@ -373,12 +374,12 @@
         self.lbl_wurfzahl.Name = "lbl_wurfzahl"
         self.lbl_wurfzahl.Size = System.Drawing.Size(35, 23)
         self.lbl_wurfzahl.TabIndex = 157
-        //  lbl_anDerReihe
-        self.lbl_anDerReihe.Location = System.Drawing.Point(324, 886)
-        self.lbl_anDerReihe.Name = "lbl_anDerReihe"
-        self.lbl_anDerReihe.Size = System.Drawing.Size(775, 56)
-        self.lbl_anDerReihe.TabIndex = 158
-        self.lbl_anDerReihe.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        //  lbl_Anleitungen
+        self.lbl_Anleitungen.Location = System.Drawing.Point(324, 886)
+        self.lbl_Anleitungen.Name = "lbl_Anleitungen"
+        self.lbl_Anleitungen.Size = System.Drawing.Size(775, 56)
+        self.lbl_Anleitungen.TabIndex = 158
+        self.lbl_Anleitungen.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         //  lbl_playerName2
         self.lbl_playerName2.Location = System.Drawing.Point(414, 848)
         self.lbl_playerName2.Name = "lbl_playerName2"
@@ -1614,7 +1615,7 @@
         self.Controls.Add(self.lbl_playerName4)
         self.Controls.Add(self.lbl_playerName3)
         self.Controls.Add(self.lbl_playerName2)
-        self.Controls.Add(self.lbl_anDerReihe)
+        self.Controls.Add(self.lbl_Anleitungen)
         self.Controls.Add(self.lbl_wurfzahl)
         self.Controls.Add(self.btn_aussetzen)
         self.Controls.Add(self.btn_wuerfeln)

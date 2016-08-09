@@ -54,7 +54,7 @@ public __partial class frm_Spielfeld: Form {
                 startfeld.BackColor = Color.DarkGray
             }
         }
-        for  c in frm_einstellungen.Controls{
+        for c in frm_einstellungen.Controls{
             if let gb = c as? GroupBox {
                 for item in gb.Controls{
                     if let rbtn = item as? RadioButton{
@@ -108,7 +108,7 @@ public __partial class frm_Spielfeld: Form {
             player1 = Spieler (spielerName : playerName1, spielerFarbe : Feld.Content.RED, startfelder : sf_red_1, sf_red_2, sf_red_3, sf_red_4, sf_red_5)
         }
         allePlayer.Add(player1)
-        lbl_playerName1.Text = player1.playerName
+        lbl_playerName1.Text = playerName1
         if CPU2 {
             player2 = CPU (cpuName : playerName2, cpuInhalt : Feld.Content.GREEN , startfelder : sf_green_1, sf_green_2, sf_green_3, sf_green_4, sf_green_5)
         }
@@ -116,7 +116,7 @@ public __partial class frm_Spielfeld: Form {
             player2 = Spieler (spielerName : playerName2, spielerFarbe : Feld.Content.GREEN, startfelder : sf_green_1, sf_green_2, sf_green_3, sf_green_4, sf_green_5)
         }
         allePlayer.Add(player2)
-        lbl_playerName2.Text = player2.playerName
+        lbl_playerName2.Text = playerName2
         if playerAnzahl > 2{
             if CPU1 {
                 player3 = CPU (cpuName : playerName3, cpuInhalt : Feld.Content.YELLOW , startfelder : sf_yellow_1, sf_yellow_2, sf_yellow_3, sf_yellow_4, sf_yellow_5)
@@ -125,12 +125,7 @@ public __partial class frm_Spielfeld: Form {
                 player3 = Spieler (spielerName : playerName3, spielerFarbe : Feld.Content.YELLOW, startfelder : sf_yellow_1, sf_yellow_2, sf_yellow_3, sf_yellow_4, sf_yellow_5)
             }
             allePlayer.Add(player3)
-            lbl_playerName3.Text = player3.playerName
-            //Player3 einfärben
-            for sf in player3.startfeldArray
-            {
-                sf.BackColor = getColorFromContent(player3.playerFarbe);
-            }
+            lbl_playerName3.Text = playerName3
             if(playerAnzahl > 3){
                 if CPU1 {
                     player4 = CPU (cpuName : playerName4, cpuInhalt : Feld.Content.BLUE, startfelder : sf_blue_1, sf_blue_2, sf_blue_3, sf_blue_4, sf_blue_5)
@@ -139,12 +134,7 @@ public __partial class frm_Spielfeld: Form {
                     player4 = Spieler (spielerName : playerName4, spielerFarbe : Feld.Content.BLUE, startfelder : sf_blue_1, sf_blue_2, sf_blue_3, sf_blue_4, sf_blue_5)
                 }
                 allePlayer.Add(player4)
-                lbl_playerName4.Text = player4.playerName
-                //Player3 einfärben
-                for sf in player4.startfeldArray
-                {
-                    sf.BackColor = getColorFromContent(player4.playerFarbe);
-                }
+                lbl_playerName4.Text = playerName4
             }
         }
     }
@@ -176,21 +166,29 @@ public __partial class frm_Spielfeld: Form {
 
     func getColorFromContent(c : Feld.Content?) -> Color{
         switch c{
-            case Feld.Content.RED: return Color.Red
-            case Feld.Content.GREEN: return Color.Green
-            case Feld.Content.YELLOW: return Color.Yellow
-            case Feld.Content.BLUE: return Color.Blue
-            case Feld.Content.BLACK: return Color.Black
-            case Feld.Content.GOAL: return Color.Magenta
-            case Feld.Content.BLOCK: return Color.White
-            default: return Color.Pink
+            case .RED: 
+                return Color.Red
+            case .GREEN:
+                return Color.Green
+            case .YELLOW: 
+                return Color.Yellow
+            case .BLUE: 
+                return Color.Blue
+            case .BLACK: 
+                return Color.Black
+            case .GOAL: 
+                return Color.Magenta
+            case .BLOCK: 
+                return Color.White
+            default: 
+                return Color.Pink
         }
     }
 
-    func propagiereRueckOptionen(aktuellesFeld : Feld, spruenge : Int32?, altesFeld : Feld, playerContent : Feld.Content?){
+    func propagiereRueckOptionen(aktuellesFeld : Feld, spruenge : Int32, altesFeld : Feld, playerContent : Feld.Content?){
         if spruenge != 0 {
             if aktuellesFeld.inhalt != Feld.Content.BLOCK{
-                for nachbar  in aktuellesFeld.nachbarn{
+                for nachbar in aktuellesFeld.nachbarn{
                     if nachbar != altesFeld{
                         propagiereRueckOptionen(nachbar, spruenge: spruenge - 1 , altesFeld: aktuellesFeld , playerContent: playerContent )
                     }
@@ -207,6 +205,7 @@ public __partial class frm_Spielfeld: Form {
                 aktuellesFeld.ForeColor = getColorFromContent(aktuellesFeld.inhalt)
             }else if aktuellesFeld.inhalt == Feld.Content.GOAL{
                 aktuellesFeld.Text = Feld.Content.GOAL.ToString()
+                aktuellesFeld.ForeColor = getColorFromContent(aktuellesFeld.inhalt)
             }
         }
     }
@@ -217,7 +216,7 @@ public __partial class frm_Spielfeld: Form {
             iter.MoveNext()
         }
         yourTurn = iter.Current
-        lbl_anDerReihe.Text = "Spieler " + yourTurn!.playerName + 
+        lbl_Anleitungen.Text = "Spieler " + yourTurn!.playerName + 
         ": Bitte würfeln Sie."
         lbl_wurfzahl.Text = ""
         schonGewuerfelt = false
@@ -247,18 +246,15 @@ public __partial class frm_Spielfeld: Form {
             if let f = c as? Feld{
                 if !(f is Startfeld){
                     f.BackColor = getColorFromContent(f.inhalt)
-                    if (f.inhalt != Feld.Content.GOAL)
-                    {
-                        f.Text = ""
-                        f.ForeColor = Color.Black
-                    }
+                    f.Text = ""
+                    f.ForeColor = Color.Black
                 }
             }
         }
     }
 
     func ruecken(propTer : Feld!, propDer : Feld!){
-        var ursprungscontent = propTer.inhalt
+        let ursprungscontent = propTer.inhalt
         propTer.inhalt = propDer.inhalt
         propTer.BackColor = propDer.BackColor
 
@@ -268,24 +264,24 @@ public __partial class frm_Spielfeld: Form {
         }
         else {
             propDer.inhalt = Feld.Content.BLACK
-            propDer.BackColor = Color.Black
+            propDer.BackColor = getColorFromContent(propDer.inhalt)
         }
 
         switch ursprungscontent! {                      //eigene Figuren können nicht geschlagen werden
-            case Feld.Content.RED:
+            case .RED:
                 fallthrough
-            case Feld.Content.GREEN:
+            case .GREEN:
                 fallthrough
-            case Feld.Content.YELLOW:
+            case .YELLOW:
                 fallthrough
-            case Feld.Content.BLUE:
+            case .BLUE:
                 schlagen(ursprungscontent)
-            case Feld.Content.BLOCK:
+            case .BLOCK:
                 blockZuSetzen = true
-                lbl_anDerReihe.Text = "Spieler " + yourTurn!.playerName + 
-                ": Bitte Block setzen. Hinweis: unterste Reihe tabu."
+                lbl_Anleitungen.Text = "Spieler " + yourTurn!.playerName + 
+                ": Bitte Block setzen. Hinweis: Unterste Reihe tabu."
                 btn_aussetzen.Enabled = false
-            case Feld.Content.GOAL:
+            case .GOAL:
                 gewinnen()
             default:
                 break;
@@ -300,7 +296,7 @@ public __partial class frm_Spielfeld: Form {
                     if !sf.Enabled && sf.schonGeruecktWorden{
                         sf.Enabled = true
                         sf.schonGeruecktWorden = false
-                        break;
+                        break
                     }
                 }
             }
@@ -309,7 +305,7 @@ public __partial class frm_Spielfeld: Form {
 
     func blockieren(wirdBlock : Feld){
         wirdBlock.inhalt = Feld.Content.BLOCK
-        wirdBlock.BackColor = Color.White
+        wirdBlock.BackColor = getColorFromContent(wirdBlock.inhalt)
         blockZuSetzen = false;
     }
 
@@ -319,7 +315,7 @@ public __partial class frm_Spielfeld: Form {
         btn_aussetzen.Enabled = false
         MessageBox.Show("Spieler " + yourTurn!.playerName + 
         " hat das Spiel gewonnen!")
-        lbl_anDerReihe.Text = "Spieler " + yourTurn!.playerName + ": Sie haben gewonnen!"
+        lbl_Anleitungen.Text = "Spieler " + yourTurn!.playerName + ": Sie haben gewonnen!"
     }
 
     func btn_beenden_Click(_ sender: System.Object!, _ e: System.EventArgs!) {
@@ -332,9 +328,9 @@ public __partial class frm_Spielfeld: Form {
         wurfzahl = zahlenfee.Next(1, 7)
         lbl_wurfzahl.Text = wurfzahl!.ToString()
         schonGewuerfelt = true
-        btn_aussetzen.Enabled = true
         btn_wuerfeln.Enabled = false
-        lbl_anDerReihe.Text = "Spieler " + yourTurn!.playerName + 
+        btn_aussetzen.Enabled = true
+        lbl_Anleitungen.Text = "Spieler " + yourTurn!.playerName + 
         ": Bitte rücken Sie. Eigene Figur anklicken, um Rückoptionen anzeigen zu lassen."
     }
 
@@ -362,9 +358,9 @@ public __partial class frm_Spielfeld: Form {
                             }
                         } else if myField.inhalt == yourTurn!.playerFarbe{
                             propagierender = myField
-                            propagiereRueckOptionen(myField, spruenge : wurfzahl, altesFeld : myField, playerContent : myField.inhalt)
+                            propagiereRueckOptionen(myField, spruenge : wurfzahl!, altesFeld : myField, playerContent : myField.inhalt)
                         }     
-                    } else  if myField.entfernung_zum_ziel <= 36 && myField.inhalt == Feld.Content.BLACK{                                                                   
+                    } else  if myField.entfernungZumZiel <= 36 && myField.inhalt == Feld.Content.BLACK{                                                                   
                         blockieren(myField)
                         nextPlayer()
                     }
@@ -516,137 +512,137 @@ public __partial class frm_Spielfeld: Form {
 
     func setNeighbors(){
         //weise nachbarn zu
-        btn_0_ziel.setNachbar(btn_1)
-        btn_1.setNachbar(btn_0_ziel, btn_2_1, btn_2_2)
-        btn_2_1.setNachbar(btn_1, btn_3_1)
-        btn_2_2.setNachbar(btn_1, btn_3_2)
-        btn_3_1.setNachbar(btn_2_1, btn_4_1)
-        btn_3_2.setNachbar(btn_2_2, btn_4_2)
-        btn_4_1.setNachbar(btn_3_1, btn_5_1)
-        btn_4_2.setNachbar(btn_3_2, btn_5_2)
-        btn_5_1.setNachbar(btn_4_1, btn_6_1)
-        btn_5_2.setNachbar(btn_4_2, btn_6_2)
-        btn_6_1.setNachbar(btn_5_1, btn_7_1)
-        btn_6_2.setNachbar(btn_5_2, btn_7_2)
-        btn_7_1.setNachbar(btn_6_1, btn_8_1)
-        btn_7_2.setNachbar(btn_6_2, btn_8_2)
-        btn_8_1.setNachbar(btn_7_1, btn_9_1)
-        btn_8_2.setNachbar(btn_7_2, btn_9_2)
-        btn_9_1.setNachbar(btn_8_1, btn_10_1)
-        btn_9_2.setNachbar(btn_8_2, btn_10_2)
-        btn_10_1.setNachbar(btn_9_1, btn_11_1)
-        btn_10_2.setNachbar(btn_9_2, btn_11_2)
-        btn_11_1.setNachbar(btn_10_1, btn_12_1)
-        btn_11_2.setNachbar(btn_10_2, btn_12_2)
-        btn_12_1.setNachbar(btn_11_1, btn_13_1)
-        btn_12_2.setNachbar(btn_11_2, btn_13_2)
-        btn_13_1.setNachbar(btn_12_1, btn_14_1)
-        btn_13_2.setNachbar(btn_12_2, btn_14_2)
-        btn_14_1.setNachbar(btn_13_1, btn_15_1)
-        btn_14_2.setNachbar(btn_13_2, btn_15_2)
-        btn_15_1.setNachbar(btn_14_1, btn_16_1)
-        btn_15_2.setNachbar(btn_14_2, btn_16_2)
-        btn_16_1.setNachbar(btn_15_1, btn_17_1)
-        btn_16_2.setNachbar(btn_15_2, btn_17_2)
-        btn_17_1.setNachbar(btn_16_1, btn_18_1)
-        btn_17_2.setNachbar(btn_16_2, btn_18_2)
-        btn_18_1.setNachbar(btn_17_1, btn_19_1)
-        btn_18_2.setNachbar(btn_17_2, btn_19_1)
-        btn_19_1.setNachbar(btn_18_1, btn_18_2, btn_20_1)
-        btn_20_1.setNachbar(btn_19_1, btn_21_1)
-        btn_21_1.setNachbar(btn_20_1, btn_22_1, btn_22_2)
-        btn_22_1.setNachbar(btn_21_1, btn_23_1)
-        btn_22_2.setNachbar(btn_21_1, btn_23_2)
-        btn_23_1.setNachbar(btn_22_1, btn_24_1)
-        btn_23_2.setNachbar(btn_22_2, btn_24_2)
-        btn_24_1.setNachbar(btn_23_1, btn_25_1)
-        btn_24_2.setNachbar(btn_23_2, btn_25_2)
-        btn_25_1.setNachbar(btn_24_1, btn_26_1, btn_26_2)
-        btn_25_2.setNachbar(btn_24_2, btn_26_3, btn_26_4)
-        btn_26_1.setNachbar(btn_25_1, btn_27_1)
-        btn_26_2.setNachbar(btn_25_1, btn_27_2)
-        btn_26_3.setNachbar(btn_25_2, btn_27_2)
-        btn_26_4.setNachbar(btn_25_2, btn_27_3)
-        btn_27_1.setNachbar(btn_26_1, btn_28_1)
-        btn_27_2.setNachbar(btn_26_2, btn_26_3)
-        btn_27_3.setNachbar(btn_26_4, btn_28_2)
-        btn_28_1.setNachbar(btn_27_1, btn_29_1)
-        btn_28_2.setNachbar(btn_27_3, btn_29_2)
-        btn_29_1.setNachbar(btn_28_1, btn_30_1, btn_30_2)
-        btn_29_2.setNachbar(btn_28_2, btn_30_3, btn_30_4)
-        btn_30_1.setNachbar(btn_29_1, btn_31_1)
-        btn_30_2.setNachbar(btn_29_1, btn_31_2)
-        btn_30_3.setNachbar(btn_29_2, btn_31_3)
-        btn_30_4.setNachbar(btn_29_2, btn_31_4)
-        btn_31_1.setNachbar(btn_30_1, btn_32_1)
-        btn_31_2.setNachbar(btn_30_2, btn_32_2, btn_32_3)
-        btn_31_3.setNachbar(btn_30_3, btn_32_4, btn_32_5)
-        btn_31_4.setNachbar(btn_30_4, btn_32_6)
-        btn_32_1.setNachbar(btn_31_1, btn_33_1)
-        btn_32_2.setNachbar(btn_31_2, btn_33_2)
-        btn_32_3.setNachbar(btn_31_2, btn_33_3)
-        btn_32_4.setNachbar(btn_31_3, btn_33_3)
-        btn_32_5.setNachbar(btn_31_3, btn_33_4)
-        btn_32_6.setNachbar(btn_31_4, btn_33_5)
-        btn_33_1.setNachbar(btn_32_1, btn_34_1, btn_34_2)
-        btn_33_2.setNachbar(btn_32_2, btn_34_3, btn_34_4)
-        btn_33_3.setNachbar(btn_32_3, btn_32_4)
-        btn_33_4.setNachbar(btn_32_5, btn_34_5, btn_34_6)
-        btn_33_5.setNachbar(btn_32_6, btn_34_7, btn_34_8)
-        btn_34_1.setNachbar(btn_33_1, btn_35_1)
-        btn_34_2.setNachbar(btn_33_1, btn_35_2)
-        btn_34_3.setNachbar(btn_33_2, btn_35_2)
-        btn_34_4.setNachbar(btn_33_2, btn_35_3)
-        btn_34_5.setNachbar(btn_33_4, btn_35_3)
-        btn_34_6.setNachbar(btn_33_4, btn_35_4)
-        btn_34_7.setNachbar(btn_33_5, btn_35_4)
-        btn_34_8.setNachbar(btn_33_5, btn_35_5)
-        btn_35_1.setNachbar(btn_34_1, btn_36_1)
-        btn_35_2.setNachbar(btn_34_2, btn_34_3, btn_36_2)
-        btn_35_3.setNachbar(btn_34_4, btn_34_5, btn_36_3)
-        btn_35_4.setNachbar(btn_34_6, btn_34_7, btn_36_4)
-        btn_35_5.setNachbar(btn_34_8, btn_36_5)
-        btn_36_1.setNachbar(btn_35_1, btn_37_1)
-        btn_36_2.setNachbar(btn_35_2, btn_37_2)
-        btn_36_3.setNachbar(btn_35_3, btn_37_3)
-        btn_36_4.setNachbar(btn_35_4, btn_37_4)
-        btn_36_5.setNachbar(btn_35_5, btn_37_5)
-        btn_37_1.setNachbar(btn_36_1, btn_38_1)
-        btn_37_2.setNachbar(btn_36_2, btn_38_2, btn_38_3)
-        btn_37_3.setNachbar(btn_36_3, btn_38_4, btn_38_5)
-        btn_37_4.setNachbar(btn_36_4, btn_38_6, btn_38_7)
-        btn_37_5.setNachbar(btn_36_5, btn_38_8)
-        btn_38_1.setNachbar(btn_37_1, btn_39_1)
-        btn_38_2.setNachbar(btn_37_2, btn_39_1)
-        btn_38_3.setNachbar(btn_37_2, btn_39_2)
-        btn_38_4.setNachbar(btn_37_3, btn_39_2)
-        btn_38_5.setNachbar(btn_37_3, btn_39_3)
-        btn_38_6.setNachbar(btn_37_4, btn_39_3)
-        btn_38_7.setNachbar(btn_37_4, btn_39_4)
-        btn_38_8.setNachbar(btn_37_5, btn_39_4)
-        btn_39_1.setNachbar(btn_38_1, btn_38_2)   //, sf_red_1, sf_red_2, sf_red_3, sf_red_4, sf_red_5)                         //wollen nie in startfelder zurückrücken
-        btn_39_2.setNachbar(btn_38_3, btn_38_4) //, sf_green_1, sf_green_2, sf_green_3, sf_green_4, sf_green_5)
-        btn_39_3.setNachbar(btn_38_5, btn_38_6) //, sf_yellow_1, sf_yellow_2, sf_yellow_3, sf_yellow_4, sf_yellow_5)
-        btn_39_4.setNachbar(btn_38_7, btn_38_8) //, sf_blue_1, sf_blue_2, sf_blue_3, sf_blue_4, sf_blue_5)
-        sf_red_1.setNachbar(btn_39_1)
-        sf_red_2.setNachbar(btn_39_1)
-        sf_red_3.setNachbar(btn_39_1)
-        sf_red_4.setNachbar(btn_39_1)
-        sf_red_5.setNachbar(btn_39_1)
-        sf_green_1.setNachbar(btn_39_2)
-        sf_green_2.setNachbar(btn_39_2)
-        sf_green_3.setNachbar(btn_39_2)
-        sf_green_4.setNachbar(btn_39_2)
-        sf_green_5.setNachbar(btn_39_2)
-        sf_yellow_1.setNachbar(btn_39_3)
-        sf_yellow_2.setNachbar(btn_39_3)
-        sf_yellow_3.setNachbar(btn_39_3)
-        sf_yellow_4.setNachbar(btn_39_3)
-        sf_yellow_5.setNachbar(btn_39_3)
-        sf_blue_1.setNachbar(btn_39_4)
-        sf_blue_2.setNachbar(btn_39_4)
-        sf_blue_3.setNachbar(btn_39_4)
-        sf_blue_4.setNachbar(btn_39_4)
-        sf_blue_5.setNachbar(btn_39_4)
+        btn_0_ziel.setNeighbors(btn_1)
+        btn_1.setNeighbors(btn_0_ziel, btn_2_1, btn_2_2)
+        btn_2_1.setNeighbors(btn_1, btn_3_1)
+        btn_2_2.setNeighbors(btn_1, btn_3_2)
+        btn_3_1.setNeighbors(btn_2_1, btn_4_1)
+        btn_3_2.setNeighbors(btn_2_2, btn_4_2)
+        btn_4_1.setNeighbors(btn_3_1, btn_5_1)
+        btn_4_2.setNeighbors(btn_3_2, btn_5_2)
+        btn_5_1.setNeighbors(btn_4_1, btn_6_1)
+        btn_5_2.setNeighbors(btn_4_2, btn_6_2)
+        btn_6_1.setNeighbors(btn_5_1, btn_7_1)
+        btn_6_2.setNeighbors(btn_5_2, btn_7_2)
+        btn_7_1.setNeighbors(btn_6_1, btn_8_1)
+        btn_7_2.setNeighbors(btn_6_2, btn_8_2)
+        btn_8_1.setNeighbors(btn_7_1, btn_9_1)
+        btn_8_2.setNeighbors(btn_7_2, btn_9_2)
+        btn_9_1.setNeighbors(btn_8_1, btn_10_1)
+        btn_9_2.setNeighbors(btn_8_2, btn_10_2)
+        btn_10_1.setNeighbors(btn_9_1, btn_11_1)
+        btn_10_2.setNeighbors(btn_9_2, btn_11_2)
+        btn_11_1.setNeighbors(btn_10_1, btn_12_1)
+        btn_11_2.setNeighbors(btn_10_2, btn_12_2)
+        btn_12_1.setNeighbors(btn_11_1, btn_13_1)
+        btn_12_2.setNeighbors(btn_11_2, btn_13_2)
+        btn_13_1.setNeighbors(btn_12_1, btn_14_1)
+        btn_13_2.setNeighbors(btn_12_2, btn_14_2)
+        btn_14_1.setNeighbors(btn_13_1, btn_15_1)
+        btn_14_2.setNeighbors(btn_13_2, btn_15_2)
+        btn_15_1.setNeighbors(btn_14_1, btn_16_1)
+        btn_15_2.setNeighbors(btn_14_2, btn_16_2)
+        btn_16_1.setNeighbors(btn_15_1, btn_17_1)
+        btn_16_2.setNeighbors(btn_15_2, btn_17_2)
+        btn_17_1.setNeighbors(btn_16_1, btn_18_1)
+        btn_17_2.setNeighbors(btn_16_2, btn_18_2)
+        btn_18_1.setNeighbors(btn_17_1, btn_19_1)
+        btn_18_2.setNeighbors(btn_17_2, btn_19_1)
+        btn_19_1.setNeighbors(btn_18_1, btn_18_2, btn_20_1)
+        btn_20_1.setNeighbors(btn_19_1, btn_21_1)
+        btn_21_1.setNeighbors(btn_20_1, btn_22_1, btn_22_2)
+        btn_22_1.setNeighbors(btn_21_1, btn_23_1)
+        btn_22_2.setNeighbors(btn_21_1, btn_23_2)
+        btn_23_1.setNeighbors(btn_22_1, btn_24_1)
+        btn_23_2.setNeighbors(btn_22_2, btn_24_2)
+        btn_24_1.setNeighbors(btn_23_1, btn_25_1)
+        btn_24_2.setNeighbors(btn_23_2, btn_25_2)
+        btn_25_1.setNeighbors(btn_24_1, btn_26_1, btn_26_2)
+        btn_25_2.setNeighbors(btn_24_2, btn_26_3, btn_26_4)
+        btn_26_1.setNeighbors(btn_25_1, btn_27_1)
+        btn_26_2.setNeighbors(btn_25_1, btn_27_2)
+        btn_26_3.setNeighbors(btn_25_2, btn_27_2)
+        btn_26_4.setNeighbors(btn_25_2, btn_27_3)
+        btn_27_1.setNeighbors(btn_26_1, btn_28_1)
+        btn_27_2.setNeighbors(btn_26_2, btn_26_3)
+        btn_27_3.setNeighbors(btn_26_4, btn_28_2)
+        btn_28_1.setNeighbors(btn_27_1, btn_29_1)
+        btn_28_2.setNeighbors(btn_27_3, btn_29_2)
+        btn_29_1.setNeighbors(btn_28_1, btn_30_1, btn_30_2)
+        btn_29_2.setNeighbors(btn_28_2, btn_30_3, btn_30_4)
+        btn_30_1.setNeighbors(btn_29_1, btn_31_1)
+        btn_30_2.setNeighbors(btn_29_1, btn_31_2)
+        btn_30_3.setNeighbors(btn_29_2, btn_31_3)
+        btn_30_4.setNeighbors(btn_29_2, btn_31_4)
+        btn_31_1.setNeighbors(btn_30_1, btn_32_1)
+        btn_31_2.setNeighbors(btn_30_2, btn_32_2, btn_32_3)
+        btn_31_3.setNeighbors(btn_30_3, btn_32_4, btn_32_5)
+        btn_31_4.setNeighbors(btn_30_4, btn_32_6)
+        btn_32_1.setNeighbors(btn_31_1, btn_33_1)
+        btn_32_2.setNeighbors(btn_31_2, btn_33_2)
+        btn_32_3.setNeighbors(btn_31_2, btn_33_3)
+        btn_32_4.setNeighbors(btn_31_3, btn_33_3)
+        btn_32_5.setNeighbors(btn_31_3, btn_33_4)
+        btn_32_6.setNeighbors(btn_31_4, btn_33_5)
+        btn_33_1.setNeighbors(btn_32_1, btn_34_1, btn_34_2)
+        btn_33_2.setNeighbors(btn_32_2, btn_34_3, btn_34_4)
+        btn_33_3.setNeighbors(btn_32_3, btn_32_4)
+        btn_33_4.setNeighbors(btn_32_5, btn_34_5, btn_34_6)
+        btn_33_5.setNeighbors(btn_32_6, btn_34_7, btn_34_8)
+        btn_34_1.setNeighbors(btn_33_1, btn_35_1)
+        btn_34_2.setNeighbors(btn_33_1, btn_35_2)
+        btn_34_3.setNeighbors(btn_33_2, btn_35_2)
+        btn_34_4.setNeighbors(btn_33_2, btn_35_3)
+        btn_34_5.setNeighbors(btn_33_4, btn_35_3)
+        btn_34_6.setNeighbors(btn_33_4, btn_35_4)
+        btn_34_7.setNeighbors(btn_33_5, btn_35_4)
+        btn_34_8.setNeighbors(btn_33_5, btn_35_5)
+        btn_35_1.setNeighbors(btn_34_1, btn_36_1)
+        btn_35_2.setNeighbors(btn_34_2, btn_34_3, btn_36_2)
+        btn_35_3.setNeighbors(btn_34_4, btn_34_5, btn_36_3)
+        btn_35_4.setNeighbors(btn_34_6, btn_34_7, btn_36_4)
+        btn_35_5.setNeighbors(btn_34_8, btn_36_5)
+        btn_36_1.setNeighbors(btn_35_1, btn_37_1)
+        btn_36_2.setNeighbors(btn_35_2, btn_37_2)
+        btn_36_3.setNeighbors(btn_35_3, btn_37_3)
+        btn_36_4.setNeighbors(btn_35_4, btn_37_4)
+        btn_36_5.setNeighbors(btn_35_5, btn_37_5)
+        btn_37_1.setNeighbors(btn_36_1, btn_38_1)
+        btn_37_2.setNeighbors(btn_36_2, btn_38_2, btn_38_3)
+        btn_37_3.setNeighbors(btn_36_3, btn_38_4, btn_38_5)
+        btn_37_4.setNeighbors(btn_36_4, btn_38_6, btn_38_7)
+        btn_37_5.setNeighbors(btn_36_5, btn_38_8)
+        btn_38_1.setNeighbors(btn_37_1, btn_39_1)
+        btn_38_2.setNeighbors(btn_37_2, btn_39_1)
+        btn_38_3.setNeighbors(btn_37_2, btn_39_2)
+        btn_38_4.setNeighbors(btn_37_3, btn_39_2)
+        btn_38_5.setNeighbors(btn_37_3, btn_39_3)
+        btn_38_6.setNeighbors(btn_37_4, btn_39_3)
+        btn_38_7.setNeighbors(btn_37_4, btn_39_4)
+        btn_38_8.setNeighbors(btn_37_5, btn_39_4)
+        btn_39_1.setNeighbors(btn_38_1, btn_38_2)   //, sf_red_1, sf_red_2, sf_red_3, sf_red_4, sf_red_5)                         //wollen nie in startfelder zurückrücken
+        btn_39_2.setNeighbors(btn_38_3, btn_38_4) //, sf_green_1, sf_green_2, sf_green_3, sf_green_4, sf_green_5)
+        btn_39_3.setNeighbors(btn_38_5, btn_38_6) //, sf_yellow_1, sf_yellow_2, sf_yellow_3, sf_yellow_4, sf_yellow_5)
+        btn_39_4.setNeighbors(btn_38_7, btn_38_8) //, sf_blue_1, sf_blue_2, sf_blue_3, sf_blue_4, sf_blue_5)
+        sf_red_1.setNeighbors(btn_39_1)
+        sf_red_2.setNeighbors(btn_39_1)
+        sf_red_3.setNeighbors(btn_39_1)
+        sf_red_4.setNeighbors(btn_39_1)
+        sf_red_5.setNeighbors(btn_39_1)
+        sf_green_1.setNeighbors(btn_39_2)
+        sf_green_2.setNeighbors(btn_39_2)
+        sf_green_3.setNeighbors(btn_39_2)
+        sf_green_4.setNeighbors(btn_39_2)
+        sf_green_5.setNeighbors(btn_39_2)
+        sf_yellow_1.setNeighbors(btn_39_3)
+        sf_yellow_2.setNeighbors(btn_39_3)
+        sf_yellow_3.setNeighbors(btn_39_3)
+        sf_yellow_4.setNeighbors(btn_39_3)
+        sf_yellow_5.setNeighbors(btn_39_3)
+        sf_blue_1.setNeighbors(btn_39_4)
+        sf_blue_2.setNeighbors(btn_39_4)
+        sf_blue_3.setNeighbors(btn_39_4)
+        sf_blue_4.setNeighbors(btn_39_4)
+        sf_blue_5.setNeighbors(btn_39_4)
     }
 }

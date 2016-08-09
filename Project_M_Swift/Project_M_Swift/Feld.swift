@@ -3,20 +3,18 @@ import System.Linq
 import System.Text
 import System.Windows.Forms
 
-
 public class Feld : Button {
-    
     var nachbarn : Feld[]?
     var inhalt : Content?
-    var entfernung_zum_ziel : Int32?
+    var entfernungZumZiel : Int32?
     
 
     func setAttributes(inhalt : Feld.Content , distanz : Integer){
         self.inhalt = inhalt
-        entfernung_zum_ziel = distanz
+        entfernungZumZiel = distanz
     }
 
-    func setNachbar(felder : Feld...){
+    func setNeighbors(felder : Feld...){
         nachbarn = felder
     }
 
