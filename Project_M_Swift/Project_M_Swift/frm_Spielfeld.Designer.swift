@@ -345,10 +345,9 @@
         self.pnl_alleFelder.SuspendLayout()
         self.SuspendLayout()
         //  btn_beenden
-        self.btn_beenden.AutoSize = true
         self.btn_beenden.Location = System.Drawing.Point(1309, 915)
         self.btn_beenden.Name = "btn_beenden"
-        self.btn_beenden.Size = System.Drawing.Size(75, 27)
+        self.btn_beenden.Size = System.Drawing.Size(85, 30)
         self.btn_beenden.TabIndex = 0
         self.btn_beenden.Text = "Beenden"
         self.btn_beenden.UseVisualStyleBackColor = true
@@ -356,16 +355,15 @@
         //  btn_wuerfeln
         self.btn_wuerfeln.Location = System.Drawing.Point(12, 886)
         self.btn_wuerfeln.Name = "btn_wuerfeln"
-        self.btn_wuerfeln.Size = System.Drawing.Size(84, 23)
+        self.btn_wuerfeln.Size = System.Drawing.Size(85, 30)
         self.btn_wuerfeln.TabIndex = 135
         self.btn_wuerfeln.Text = "Würfeln"
         self.btn_wuerfeln.UseVisualStyleBackColor = true
         self.btn_wuerfeln.Click += System.EventHandler(self.btn_wuerfeln_Click)
         //  btn_aussetzen
-        self.btn_aussetzen.AutoSize = true
         self.btn_aussetzen.Location = System.Drawing.Point(12, 915)
         self.btn_aussetzen.Name = "btn_aussetzen"
-        self.btn_aussetzen.Size = System.Drawing.Size(84, 27)
+        self.btn_aussetzen.Size = System.Drawing.Size(85, 30)
         self.btn_aussetzen.TabIndex = 136
         self.btn_aussetzen.Text = "Aussetzen"
         self.btn_aussetzen.UseVisualStyleBackColor = true
@@ -408,9 +406,9 @@
         //  btn_reset
         self.btn_reset.Location = System.Drawing.Point(1309, 886)
         self.btn_reset.Name = "btn_reset"
-        self.btn_reset.Size = System.Drawing.Size(75, 27)
+        self.btn_reset.Size = System.Drawing.Size(85, 30)
         self.btn_reset.TabIndex = 164
-        self.btn_reset.Text = "reset"
+        self.btn_reset.Text = "Reset"
         self.btn_reset.UseVisualStyleBackColor = true
         self.btn_reset.Click += System.EventHandler(self.btn_reset_Click)
         //  sf_blue_4
@@ -1628,7 +1626,6 @@
         self.FormClosing += System.Windows.Forms.FormClosingEventHandler(self.frm_Spielfeld_FormClosing)
         self.pnl_alleFelder.ResumeLayout(false)
         self.ResumeLayout(false)
-        self.PerformLayout()
     }
 
 	#endregion

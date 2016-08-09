@@ -113,7 +113,7 @@ public __partial class frm_Spielfeld: Form {
             player2 = CPU (cpuName : playerName2, cpuInhalt : Feld.Content.GREEN , startfelder : sf_green_1, sf_green_2, sf_green_3, sf_green_4, sf_green_5)
         }
         else{
-            player2 = Spieler (spielerName : playerName1, spielerFarbe : Feld.Content.GREEN, startfelder : sf_green_1, sf_green_2, sf_green_3, sf_green_4, sf_green_5)
+            player2 = Spieler (spielerName : playerName2, spielerFarbe : Feld.Content.GREEN, startfelder : sf_green_1, sf_green_2, sf_green_3, sf_green_4, sf_green_5)
         }
         allePlayer.Add(player2)
         lbl_playerName2.Text = player2.playerName
@@ -122,7 +122,7 @@ public __partial class frm_Spielfeld: Form {
                 player3 = CPU (cpuName : playerName3, cpuInhalt : Feld.Content.YELLOW , startfelder : sf_yellow_1, sf_yellow_2, sf_yellow_3, sf_yellow_4, sf_yellow_5)
             }
             else{
-                player3 = Spieler (spielerName : playerName1, spielerFarbe : Feld.Content.YELLOW, startfelder : sf_yellow_1, sf_yellow_2, sf_yellow_3, sf_yellow_4, sf_yellow_5)
+                player3 = Spieler (spielerName : playerName3, spielerFarbe : Feld.Content.YELLOW, startfelder : sf_yellow_1, sf_yellow_2, sf_yellow_3, sf_yellow_4, sf_yellow_5)
             }
             allePlayer.Add(player3)
             lbl_playerName3.Text = player3.playerName
@@ -136,7 +136,7 @@ public __partial class frm_Spielfeld: Form {
                     player4 = CPU (cpuName : playerName4, cpuInhalt : Feld.Content.BLUE, startfelder : sf_blue_1, sf_blue_2, sf_blue_3, sf_blue_4, sf_blue_5)
                 }
                 else{
-                    player4 = Spieler (spielerName : playerName1, spielerFarbe : Feld.Content.BLUE, startfelder : sf_blue_1, sf_blue_2, sf_blue_3, sf_blue_4, sf_blue_5)
+                    player4 = Spieler (spielerName : playerName4, spielerFarbe : Feld.Content.BLUE, startfelder : sf_blue_1, sf_blue_2, sf_blue_3, sf_blue_4, sf_blue_5)
                 }
                 allePlayer.Add(player4)
                 lbl_playerName4.Text = player4.playerName
@@ -203,14 +203,13 @@ public __partial class frm_Spielfeld: Form {
                 aktuellesFeld.Text = Feld.Content.BLOCK.ToString()
             }
             if aktuellesFeld.inhalt!.rawValue <= playerAnzahl && aktuellesFeld.inhalt != playerContent{
-                aktuellesFeld.Text = aktuellesFeld.inhalt.ToString()
+                aktuellesFeld.Text = aktuellesFeld.inhalt!.ToString()
                 aktuellesFeld.ForeColor = getColorFromContent(aktuellesFeld.inhalt)
             }else if aktuellesFeld.inhalt == Feld.Content.GOAL{
                 aktuellesFeld.Text = Feld.Content.GOAL.ToString()
             }
         }
     }
-
 
     func nextPlayer(){
         if !(iter.MoveNext()){
@@ -319,9 +318,8 @@ public __partial class frm_Spielfeld: Form {
         btn_wuerfeln.Enabled = false
         btn_aussetzen.Enabled = false
         MessageBox.Show("Spieler " + yourTurn!.playerName + 
-        " hat das Spiel gewonnen!");
-        lbl_anDerReihe.Text = "Spieler " + yourTurn!.playerName +
-        ": Sie haben gewonnen!"
+        " hat das Spiel gewonnen!")
+        lbl_anDerReihe.Text = "Spieler " + yourTurn!.playerName + ": Sie haben gewonnen!"
     }
 
     func btn_beenden_Click(_ sender: System.Object!, _ e: System.EventArgs!) {
@@ -340,7 +338,7 @@ public __partial class frm_Spielfeld: Form {
         ": Bitte rücken Sie. Eigene Figur anklicken, um Rückoptionen anzeigen zu lassen."
     }
 
-        func btn_aussetzen_Click(_ sender: System.Object!, _ e: System.EventArgs!) {
+    func btn_aussetzen_Click(_ sender: System.Object!, _ e: System.EventArgs!) {
         nextPlayer()
     }
     
@@ -350,32 +348,30 @@ public __partial class frm_Spielfeld: Form {
     }
 
     func btn_Click(_ sender: System.Object!, _ e: System.EventArgs!){
-        if let feld = sender as? Feld{
+        if let myField = sender as? Feld{
             if !someoneWon{
-                if !blockZuSetzen{
-                    if schonGewuerfelt{
-                        if feld.BackColor != Color.LightGray{
+                if schonGewuerfelt{
+                    if !blockZuSetzen{
+                        if myField.BackColor != Color.LightGray{
                             rueckOptionenZuruecksetzen()
                         }
-                        if feld.BackColor == Color.LightGray{
-                            ruecken(feld, propDer : propagierender);
+                        if myField.BackColor == Color.LightGray{
+                            ruecken(myField, propDer : propagierender);
                             if !blockZuSetzen && !someoneWon{
                                 nextPlayer()
                             }
-                        } else if feld.inhalt == yourTurn!.playerFarbe{
-                            propagierender = feld
-                            propagiereRueckOptionen(feld, spruenge : wurfzahl, altesFeld : feld, playerContent : feld.inhalt)
+                        } else if myField.inhalt == yourTurn!.playerFarbe{
+                            propagierender = myField
+                            propagiereRueckOptionen(myField, spruenge : wurfzahl, altesFeld : myField, playerContent : myField.inhalt)
                         }     
+                    } else  if myField.entfernung_zum_ziel <= 36 && myField.inhalt == Feld.Content.BLACK{                                                                   
+                        blockieren(myField)
+                        nextPlayer()
                     }
-                } else  if feld.entfernung_zum_ziel <= 36 && feld.inhalt == Feld.Content.BLACK{                                                                   
-                    blockieren(feld)
-                    nextPlayer()
                 }
             }
         }
-    }
-
-  
+    } 
 
     func frm_Spielfeld_FormClosing(_ sender: System.Object!, _ e: System.Windows.Forms.FormClosingEventArgs!) {
         frm_menue.Dispose()
